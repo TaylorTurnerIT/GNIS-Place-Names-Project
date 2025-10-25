@@ -1,0 +1,1257 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Place Name Match Review</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .match-card {
+            border: 1px solid #ddd;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .high-confidence { border-left: 5px solid green; }
+        .medium-confidence { border-left: 5px solid orange; }
+        .low-confidence { border-left: 5px solid red; }
+        .match-header { font-weight: bold; margin-bottom: 10px; }
+        .confidence { 
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 3px;
+            color: white;
+            font-weight: bold;
+        }
+        .conf-high { background-color: green; }
+        .conf-medium { background-color: orange; }
+        .conf-low { background-color: red; }
+        .details { margin: 5px 0; }
+        .label { font-weight: bold; color: #555; }
+        button { 
+            padding: 5px 15px;
+            margin: 5px 5px 0 0;
+            cursor: pointer;
+        }
+        .approve { background-color: #4CAF50; color: white; border: none; }
+        .reject { background-color: #f44336; color: white; border: none; }
+        .skip { background-color: #999; color: white; border: none; }
+    </style>
+</head>
+<body>
+    <h1>Place Name Match Review</h1>
+    <p>Review matches and approve or reject. Medium confidence matches shown below.</p>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #1
+            <span class="confidence conf-medium">80.0%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Aaron 
+            (Benton)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Aaron Branch 
+            (Scott - Stream)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> NAME_VARIATION
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> Name variation: aaron branch
+        </div>
+        <button class="approve" onclick="approve(0)">✓ Approve</button>
+        <button class="reject" onclick="reject(0)">✗ Reject</button>
+        <button class="skip" onclick="skip(0)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #2
+            <span class="confidence conf-medium">80.0%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Aaron 
+            (Benton)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Aaron Branch 
+            (Lawrence - Stream)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> NAME_VARIATION
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> Name variation: aaron branch
+        </div>
+        <button class="approve" onclick="approve(1)">✓ Approve</button>
+        <button class="reject" onclick="reject(1)">✗ Reject</button>
+        <button class="skip" onclick="skip(1)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #3
+            <span class="confidence conf-medium">80.0%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Aaron 
+            (Benton)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Aaron Branch 
+            (Jackson - Stream)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> NAME_VARIATION
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> Name variation: aaron branch
+        </div>
+        <button class="approve" onclick="approve(2)">✓ Approve</button>
+        <button class="reject" onclick="reject(2)">✗ Reject</button>
+        <button class="skip" onclick="skip(2)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #4
+            <span class="confidence conf-medium">80.0%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Aaron 
+            (Bradley)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Aaron Branch 
+            (Scott - Stream)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> NAME_VARIATION
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> Name variation: aaron branch
+        </div>
+        <button class="approve" onclick="approve(3)">✓ Approve</button>
+        <button class="reject" onclick="reject(3)">✗ Reject</button>
+        <button class="skip" onclick="skip(3)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #5
+            <span class="confidence conf-medium">80.0%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Aaron 
+            (Bradley)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Aaron Branch 
+            (Lawrence - Stream)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> NAME_VARIATION
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> Name variation: aaron branch
+        </div>
+        <button class="approve" onclick="approve(4)">✓ Approve</button>
+        <button class="reject" onclick="reject(4)">✗ Reject</button>
+        <button class="skip" onclick="skip(4)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #6
+            <span class="confidence conf-medium">80.0%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Aaron 
+            (Bradley)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Aaron Branch 
+            (Jackson - Stream)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> NAME_VARIATION
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> Name variation: aaron branch
+        </div>
+        <button class="approve" onclick="approve(5)">✓ Approve</button>
+        <button class="reject" onclick="reject(5)">✗ Reject</button>
+        <button class="skip" onclick="skip(5)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #7
+            <span class="confidence conf-medium">80.0%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Aaron 
+            (Knox)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Aaron Branch 
+            (Scott - Stream)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> NAME_VARIATION
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> Name variation: aaron branch
+        </div>
+        <button class="approve" onclick="approve(6)">✓ Approve</button>
+        <button class="reject" onclick="reject(6)">✗ Reject</button>
+        <button class="skip" onclick="skip(6)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #8
+            <span class="confidence conf-medium">80.0%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Aaron 
+            (Knox)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Aaron Branch 
+            (Lawrence - Stream)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> NAME_VARIATION
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> Name variation: aaron branch
+        </div>
+        <button class="approve" onclick="approve(7)">✓ Approve</button>
+        <button class="reject" onclick="reject(7)">✗ Reject</button>
+        <button class="skip" onclick="skip(7)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #9
+            <span class="confidence conf-medium">80.0%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Aaron 
+            (Knox)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Aaron Branch 
+            (Jackson - Stream)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> NAME_VARIATION
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> Name variation: aaron branch
+        </div>
+        <button class="approve" onclick="approve(8)">✓ Approve</button>
+        <button class="reject" onclick="reject(8)">✗ Reject</button>
+        <button class="skip" onclick="skip(8)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #10
+            <span class="confidence conf-medium">80.0%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Abbott 
+            (Campbell)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Abbott Branch 
+            (Benton - Stream)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> NAME_VARIATION
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> Name variation: abbott branch
+        </div>
+        <button class="approve" onclick="approve(9)">✓ Approve</button>
+        <button class="reject" onclick="reject(9)">✗ Reject</button>
+        <button class="skip" onclick="skip(9)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #12
+            <span class="confidence conf-medium">80.0%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Abel 
+            (Cumberland)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Abel Valley 
+            (Roane - Valley)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> NAME_VARIATION
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> Name variation: abel valley
+        </div>
+        <button class="approve" onclick="approve(11)">✓ Approve</button>
+        <button class="reject" onclick="reject(11)">✗ Reject</button>
+        <button class="skip" onclick="skip(11)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #13
+            <span class="confidence conf-medium">77.5%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Abington 
+            (McMinn)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Byington 
+            (Knox - Populated Place)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> FUZZY_GENERAL
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> Fuzzy match (score: 87.5), different county
+        </div>
+        <button class="approve" onclick="approve(12)">✓ Approve</button>
+        <button class="reject" onclick="reject(12)">✗ Reject</button>
+        <button class="skip" onclick="skip(12)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #14
+            <span class="confidence conf-medium">75.0%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Abrams Chapel 
+            (Hardin)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Abrams Gap 
+            (Blount - Gap)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> FIRST_WORD
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> First word match, different county
+        </div>
+        <button class="approve" onclick="approve(13)">✓ Approve</button>
+        <button class="reject" onclick="reject(13)">✗ Reject</button>
+        <button class="skip" onclick="skip(13)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #15
+            <span class="confidence conf-medium">75.0%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Abrams Chapel 
+            (Hardin)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Abrams Falls 
+            (Blount - Falls)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> FIRST_WORD
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> First word match, different county
+        </div>
+        <button class="approve" onclick="approve(14)">✓ Approve</button>
+        <button class="reject" onclick="reject(14)">✗ Reject</button>
+        <button class="skip" onclick="skip(14)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #16
+            <span class="confidence conf-medium">75.0%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Abrams Chapel 
+            (Hardin)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Abrams Creek 
+            (Blount - Stream)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> FIRST_WORD
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> First word match, different county
+        </div>
+        <button class="approve" onclick="approve(15)">✓ Approve</button>
+        <button class="reject" onclick="reject(15)">✗ Reject</button>
+        <button class="skip" onclick="skip(15)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #17
+            <span class="confidence conf-medium">82.3%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Acadia 
+            (Fayette)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Arcadia 
+            (Sullivan - Populated Place)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> FUZZY_GENERAL
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> Fuzzy match (score: 92.3076923076923), different county
+        </div>
+        <button class="approve" onclick="approve(16)">✓ Approve</button>
+        <button class="reject" onclick="reject(16)">✗ Reject</button>
+        <button class="skip" onclick="skip(16)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #33
+            <span class="confidence conf-medium">77.0%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Adairs Creek 
+            (Knox)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Adams Creek 
+            (Cumberland - Stream)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> FUZZY_GENERAL
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> Fuzzy match (score: 86.95652173913044), different county
+        </div>
+        <button class="approve" onclick="approve(32)">✓ Approve</button>
+        <button class="reject" onclick="reject(32)">✗ Reject</button>
+        <button class="skip" onclick="skip(32)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #43
+            <span class="confidence conf-medium">80.0%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Adcock 
+            (Knox)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Adcock Hollow 
+            (Morgan - Valley)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> NAME_VARIATION
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> Name variation: adcock hollow
+        </div>
+        <button class="approve" onclick="approve(42)">✓ Approve</button>
+        <button class="reject" onclick="reject(42)">✗ Reject</button>
+        <button class="skip" onclick="skip(42)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #57
+            <span class="confidence conf-medium">80.0%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Albright 
+            (Sumner)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Albright Hollow 
+            (Lincoln - Valley)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> NAME_VARIATION
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> Name variation: albright hollow
+        </div>
+        <button class="approve" onclick="approve(56)">✓ Approve</button>
+        <button class="reject" onclick="reject(56)">✗ Reject</button>
+        <button class="skip" onclick="skip(56)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #62
+            <span class="confidence conf-medium">75.7%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Alderville 
+            (Scott)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Haglerville (historical) 
+            (Henry - Populated Place)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> FUZZY_GENERAL
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> Fuzzy match (score: 85.71428571428572), different county
+        </div>
+        <button class="approve" onclick="approve(61)">✓ Approve</button>
+        <button class="reject" onclick="reject(61)">✗ Reject</button>
+        <button class="skip" onclick="skip(61)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #67
+            <span class="confidence conf-medium">80.0%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Alex 
+            (Davidson)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Alex Hollow 
+            (Perry - Valley)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> NAME_VARIATION
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> Name variation: alex hollow
+        </div>
+        <button class="approve" onclick="approve(66)">✓ Approve</button>
+        <button class="reject" onclick="reject(66)">✗ Reject</button>
+        <button class="skip" onclick="skip(66)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #68
+            <span class="confidence conf-medium">80.0%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Alex 
+            (Davidson)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Alex Branch 
+            (Sequatchie - Stream)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> NAME_VARIATION
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> Name variation: alex branch
+        </div>
+        <button class="approve" onclick="approve(67)">✓ Approve</button>
+        <button class="reject" onclick="reject(67)">✗ Reject</button>
+        <button class="skip" onclick="skip(67)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #69
+            <span class="confidence conf-medium">80.0%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Alex 
+            (Davidson)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Alex Branch 
+            (Morgan - Stream)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> NAME_VARIATION
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> Name variation: alex branch
+        </div>
+        <button class="approve" onclick="approve(68)">✓ Approve</button>
+        <button class="reject" onclick="reject(68)">✗ Reject</button>
+        <button class="skip" onclick="skip(68)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #70
+            <span class="confidence conf-medium">83.3%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Alexanders Mills 
+            (Henderson)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Alexander Mill 
+            (Greene - Populated Place)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> FUZZY_GENERAL
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> Fuzzy match (score: 93.33333333333333), different county
+        </div>
+        <button class="approve" onclick="approve(69)">✓ Approve</button>
+        <button class="reject" onclick="reject(69)">✗ Reject</button>
+        <button class="skip" onclick="skip(69)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #73
+            <span class="confidence conf-medium">80.0%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Alice 
+            (Benton)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Alice Creek 
+            (Morgan - Stream)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> NAME_VARIATION
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> Name variation: alice creek
+        </div>
+        <button class="approve" onclick="approve(72)">✓ Approve</button>
+        <button class="reject" onclick="reject(72)">✗ Reject</button>
+        <button class="skip" onclick="skip(72)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #74
+            <span class="confidence conf-medium">77.5%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Alisonia 
+            (Franklin)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Allisona 
+            (Williamson - Populated Place)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> FUZZY_GENERAL
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> Fuzzy match (score: 87.5), different county
+        </div>
+        <button class="approve" onclick="approve(73)">✓ Approve</button>
+        <button class="reject" onclick="reject(73)">✗ Reject</button>
+        <button class="skip" onclick="skip(73)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #75
+            <span class="confidence conf-medium">77.5%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Alisonia 
+            (Franklin)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Allisona 
+            (Rutherford - Populated Place)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> FUZZY_GENERAL
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> Fuzzy match (score: 87.5), different county
+        </div>
+        <button class="approve" onclick="approve(74)">✓ Approve</button>
+        <button class="reject" onclick="reject(74)">✗ Reject</button>
+        <button class="skip" onclick="skip(74)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #79
+            <span class="confidence conf-medium">78.9%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Allendale 
+            (Claiborne)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Ellendale 
+            (Shelby - Populated Place)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> FUZZY_GENERAL
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> Fuzzy match (score: 88.88888888888889), different county
+        </div>
+        <button class="approve" onclick="approve(78)">✓ Approve</button>
+        <button class="reject" onclick="reject(78)">✗ Reject</button>
+        <button class="skip" onclick="skip(78)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #80
+            <span class="confidence conf-medium">78.9%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Allendale 
+            (Claiborne)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Allandale 
+            (Hawkins - Populated Place)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> FUZZY_GENERAL
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> Fuzzy match (score: 88.88888888888889), different county
+        </div>
+        <button class="approve" onclick="approve(79)">✓ Approve</button>
+        <button class="reject" onclick="reject(79)">✗ Reject</button>
+        <button class="skip" onclick="skip(79)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #83
+            <span class="confidence conf-medium">80.0%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Allens Chapel 
+            (DeKalb)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Allens 
+            (Haywood - Populated Place)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> NAME_VARIATION
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> Name variation: allens
+        </div>
+        <button class="approve" onclick="approve(82)">✓ Approve</button>
+        <button class="reject" onclick="reject(82)">✗ Reject</button>
+        <button class="skip" onclick="skip(82)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #87
+            <span class="confidence conf-medium">86.0%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Allens Ferry 
+            (Cannon)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Callens Ferry (historical) 
+            (Hardin - Crossing)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> FUZZY_GENERAL
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> Fuzzy match (score: 96.0), different county
+        </div>
+        <button class="approve" onclick="approve(86)">✓ Approve</button>
+        <button class="reject" onclick="reject(86)">✗ Reject</button>
+        <button class="skip" onclick="skip(86)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #88
+            <span class="confidence conf-medium">86.0%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Allens Ferry 
+            (Warren)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Callens Ferry (historical) 
+            (Hardin - Crossing)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> FUZZY_GENERAL
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> Fuzzy match (score: 96.0), different county
+        </div>
+        <button class="approve" onclick="approve(87)">✓ Approve</button>
+        <button class="reject" onclick="reject(87)">✗ Reject</button>
+        <button class="skip" onclick="skip(87)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #89
+            <span class="confidence conf-medium">78.0%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Allens Stand 
+            (Lawrence)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Allens Island 
+            (Greene - Island)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> FUZZY_GENERAL
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> Fuzzy match (score: 88.0), different county
+        </div>
+        <button class="approve" onclick="approve(88)">✓ Approve</button>
+        <button class="reject" onclick="reject(88)">✗ Reject</button>
+        <button class="skip" onclick="skip(88)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #90
+            <span class="confidence conf-medium">80.0%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Allens Station 
+            (Hancock)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Allens 
+            (Haywood - Populated Place)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> NAME_VARIATION
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> Name variation: allens
+        </div>
+        <button class="approve" onclick="approve(89)">✓ Approve</button>
+        <button class="reject" onclick="reject(89)">✗ Reject</button>
+        <button class="skip" onclick="skip(89)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #91
+            <span class="confidence conf-medium">80.0%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Allens Station 
+            (Hawkins)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Allens 
+            (Haywood - Populated Place)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> NAME_VARIATION
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> Name variation: allens
+        </div>
+        <button class="approve" onclick="approve(90)">✓ Approve</button>
+        <button class="reject" onclick="reject(90)">✗ Reject</button>
+        <button class="skip" onclick="skip(90)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #96
+            <span class="confidence conf-medium">85.2%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Allenville 
+            (Giles)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Allensville (historical) 
+            (Sevier - Populated Place)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> FUZZY_GENERAL
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> Fuzzy match (score: 95.23809523809523), different county
+        </div>
+        <button class="approve" onclick="approve(95)">✓ Approve</button>
+        <button class="reject" onclick="reject(95)">✗ Reject</button>
+        <button class="skip" onclick="skip(95)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #98
+            <span class="confidence conf-medium">85.2%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Allenville 
+            (Warren)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Allensville (historical) 
+            (Sevier - Populated Place)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> FUZZY_GENERAL
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> Fuzzy match (score: 95.23809523809523), different county
+        </div>
+        <button class="approve" onclick="approve(97)">✓ Approve</button>
+        <button class="reject" onclick="reject(97)">✗ Reject</button>
+        <button class="skip" onclick="skip(97)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #99
+            <span class="confidence conf-medium">80.9%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Alley 
+            (Sequatchie)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Talley 
+            (Marshall - Populated Place)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> FUZZY_GENERAL
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> Fuzzy match (score: 90.9090909090909), different county
+        </div>
+        <button class="approve" onclick="approve(98)">✓ Approve</button>
+        <button class="reject" onclick="reject(98)">✗ Reject</button>
+        <button class="skip" onclick="skip(98)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #101
+            <span class="confidence conf-medium">78.9%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Allington 
+            (Roane)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Arlington 
+            (Knox - Populated Place)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> FUZZY_GENERAL
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> Fuzzy match (score: 88.88888888888889), different county
+        </div>
+        <button class="approve" onclick="approve(100)">✓ Approve</button>
+        <button class="reject" onclick="reject(100)">✗ Reject</button>
+        <button class="skip" onclick="skip(100)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #102
+            <span class="confidence conf-medium">78.9%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Allington 
+            (Roane)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Arlington 
+            (Shelby - Populated Place)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> FUZZY_GENERAL
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> Fuzzy match (score: 88.88888888888889), different county
+        </div>
+        <button class="approve" onclick="approve(101)">✓ Approve</button>
+        <button class="reject" onclick="reject(101)">✗ Reject</button>
+        <button class="skip" onclick="skip(101)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #103
+            <span class="confidence conf-medium">78.9%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Allington 
+            (Roane)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Arlington 
+            (Houston - Populated Place)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> FUZZY_GENERAL
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> Fuzzy match (score: 88.88888888888889), different county
+        </div>
+        <button class="approve" onclick="approve(102)">✓ Approve</button>
+        <button class="reject" onclick="reject(102)">✗ Reject</button>
+        <button class="skip" onclick="skip(102)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #104
+            <span class="confidence conf-medium">87.4%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Allosonia 
+            (Williamson)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Allisona 
+            (Williamson - Populated Place)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> FUZZY_GENERAL
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> Fuzzy match (score: 82.35294117647058), same county
+        </div>
+        <button class="approve" onclick="approve(103)">✓ Approve</button>
+        <button class="reject" onclick="reject(103)">✗ Reject</button>
+        <button class="skip" onclick="skip(103)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #105
+            <span class="confidence conf-medium">82.3%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Alltens 
+            (Overton)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Allens 
+            (Haywood - Populated Place)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> FUZZY_GENERAL
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> Fuzzy match (score: 92.3076923076923), different county
+        </div>
+        <button class="approve" onclick="approve(104)">✓ Approve</button>
+        <button class="reject" onclick="reject(104)">✗ Reject</button>
+        <button class="skip" onclick="skip(104)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #114
+            <span class="confidence conf-medium">82.3%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Alpines 
+            (Rhea)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Alpine 
+            (Overton - Populated Place)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> FUZZY_GENERAL
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> Fuzzy match (score: 92.3076923076923), different county
+        </div>
+        <button class="approve" onclick="approve(113)">✓ Approve</button>
+        <button class="reject" onclick="reject(113)">✗ Reject</button>
+        <button class="skip" onclick="skip(113)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #118
+            <span class="confidence conf-medium">80.9%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Alton 
+            (Cannon)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Walton (historical) 
+            (Davidson - Populated Place)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> FUZZY_GENERAL
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> Fuzzy match (score: 90.9090909090909), different county
+        </div>
+        <button class="approve" onclick="approve(117)">✓ Approve</button>
+        <button class="reject" onclick="reject(117)">✗ Reject</button>
+        <button class="skip" onclick="skip(117)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #119
+            <span class="confidence conf-medium">77.0%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Alton Hill 
+            (Macon)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Hamilton Hill 
+            (Sullivan - Summit)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> FUZZY_GENERAL
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> Fuzzy match (score: 86.95652173913044), different county
+        </div>
+        <button class="approve" onclick="approve(118)">✓ Approve</button>
+        <button class="reject" onclick="reject(118)">✗ Reject</button>
+        <button class="skip" onclick="skip(118)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #120
+            <span class="confidence conf-medium">77.0%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Alton Hill 
+            (Shelby)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Hamilton Hill 
+            (Sullivan - Summit)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> FUZZY_GENERAL
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> Fuzzy match (score: 86.95652173913044), different county
+        </div>
+        <button class="approve" onclick="approve(119)">✓ Approve</button>
+        <button class="reject" onclick="reject(119)">✗ Reject</button>
+        <button class="skip" onclick="skip(119)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #125
+            <span class="confidence conf-medium">78.3%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Alum Springs 
+            (Hawkins)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Ball Spring 
+            (Hawkins - Spring)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> FUZZY_WITH_COUNTY
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> Fuzzy match in same county (score: 78.26086956521739)
+        </div>
+        <button class="approve" onclick="approve(124)">✓ Approve</button>
+        <button class="reject" onclick="reject(124)">✗ Reject</button>
+        <button class="skip" onclick="skip(124)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #136
+            <span class="confidence conf-medium">78.9%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Ammis 
+            (Meigs)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Amis 
+            (Hawkins - Populated Place)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> FUZZY_GENERAL
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> Fuzzy match (score: 88.88888888888889), different county
+        </div>
+        <button class="approve" onclick="approve(135)">✓ Approve</button>
+        <button class="reject" onclick="reject(135)">✗ Reject</button>
+        <button class="skip" onclick="skip(135)">→ Skip</button>
+    </div>
+
+    <div class="match-card medium-confidence">
+        <div class="match-header">
+            Match #137
+            <span class="confidence conf-medium">78.9%</span>
+        </div>
+        <div class="details">
+            <span class="label">PlaceNames:</span> Amish 
+            (Lawrence)
+        </div>
+        <div class="details">
+            <span class="label">GNIS:</span> Amis 
+            (Hawkins - Populated Place)
+        </div>
+        <div class="details">
+            <span class="label">Strategy:</span> FUZZY_GENERAL
+        </div>
+        <div class="details">
+            <span class="label">Notes:</span> Fuzzy match (score: 88.88888888888889), different county
+        </div>
+        <button class="approve" onclick="approve(136)">✓ Approve</button>
+        <button class="reject" onclick="reject(136)">✗ Reject</button>
+        <button class="skip" onclick="skip(136)">→ Skip</button>
+    </div>
+
+    <script>
+        function approve(id) {
+            alert('Match ' + id + ' approved (this is a demo - implement backend to save)');
+            // In production, send to backend to update database
+        }
+        function reject(id) {
+            alert('Match ' + id + ' rejected (this is a demo - implement backend to save)');
+        }
+        function skip(id) {
+            alert('Match ' + id + ' skipped (this is a demo - implement backend to save)');
+        }
+    </script>
+</body>
+</html>

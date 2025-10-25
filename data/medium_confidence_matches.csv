@@ -1,0 +1,301 @@
+place_idx,place_name,place_county,place_po_start,place_po_end,gnis_idx,gnis_id,gnis_name,gnis_county,gnis_feature_class,confidence,match_strategy,notes
+0,Aaron,Benton,1889.0,1890.0,6369.0,1275414.0,Aaron Branch,Scott,Stream,80.0,NAME_VARIATION,Name variation: aaron branch
+0,Aaron,Benton,1889.0,1890.0,6482.0,1275413.0,Aaron Branch,Lawrence,Stream,80.0,NAME_VARIATION,Name variation: aaron branch
+0,Aaron,Benton,1889.0,1890.0,10730.0,1304754.0,Aaron Branch,Jackson,Stream,80.0,NAME_VARIATION,Name variation: aaron branch
+1,Aaron,Bradley,1860.0,1860.0,6369.0,1275414.0,Aaron Branch,Scott,Stream,80.0,NAME_VARIATION,Name variation: aaron branch
+1,Aaron,Bradley,1860.0,1860.0,6482.0,1275413.0,Aaron Branch,Lawrence,Stream,80.0,NAME_VARIATION,Name variation: aaron branch
+1,Aaron,Bradley,1860.0,1860.0,10730.0,1304754.0,Aaron Branch,Jackson,Stream,80.0,NAME_VARIATION,Name variation: aaron branch
+2,Aaron,Knox,,,6369.0,1275414.0,Aaron Branch,Scott,Stream,80.0,NAME_VARIATION,Name variation: aaron branch
+2,Aaron,Knox,,,6482.0,1275413.0,Aaron Branch,Lawrence,Stream,80.0,NAME_VARIATION,Name variation: aaron branch
+2,Aaron,Knox,,,10730.0,1304754.0,Aaron Branch,Jackson,Stream,80.0,NAME_VARIATION,Name variation: aaron branch
+3,Abbott,Campbell,1890.0,1892.0,8557.0,1275416.0,Abbott Branch,Benton,Stream,80.0,NAME_VARIATION,Name variation: abbott branch
+5,Abel,Cumberland,1899.0,1899.0,16671.0,1304756.0,Abel Valley,Roane,Valley,80.0,NAME_VARIATION,Name variation: abel valley
+8,Abington,McMinn,,,29560.0,1279237.0,Byington,Knox,Populated Place,77.5,FUZZY_GENERAL,"Fuzzy match (score: 87.5), different county"
+9,Abrams Chapel,Hardin,,,19101.0,1275433.0,Abrams Gap,Blount,Gap,75.0,FIRST_WORD,"First word match, different county"
+9,Abrams Chapel,Hardin,,,2328.0,1275431.0,Abrams Falls,Blount,Falls,75.0,FIRST_WORD,"First word match, different county"
+9,Abrams Chapel,Hardin,,,12690.0,1304758.0,Abrams Creek,Blount,Stream,75.0,FIRST_WORD,"First word match, different county"
+10,Acadia,Fayette,1834.0,1836.0,27712.0,1314593.0,Arcadia,Sullivan,Populated Place,82.3076923076923,FUZZY_GENERAL,"Fuzzy match (score: 92.3076923076923), different county"
+25,Adairs Creek,Knox,1879.0,1891.0,16231.0,1275467.0,Adams Creek,Cumberland,Stream,76.95652173913044,FUZZY_GENERAL,"Fuzzy match (score: 86.95652173913044), different county"
+35,Adcock,Knox,,1899.0,26905.0,1647195.0,Adcock Hollow,Morgan,Valley,80.0,NAME_VARIATION,Name variation: adcock hollow
+68,Albright,Sumner,,,19855.0,1275526.0,Albright Hollow,Lincoln,Valley,80.0,NAME_VARIATION,Name variation: albright hollow
+75,Alderville,Scott,,1914.0,1389.0,1310776.0,Haglerville (historical),Henry,Populated Place,75.71428571428572,FUZZY_GENERAL,"Fuzzy match (score: 85.71428571428572), different county"
+79,Alex,Davidson,,1890.0,17048.0,1275543.0,Alex Hollow,Perry,Valley,80.0,NAME_VARIATION,Name variation: alex hollow
+79,Alex,Davidson,,1890.0,6844.0,1275541.0,Alex Branch,Sequatchie,Stream,80.0,NAME_VARIATION,Name variation: alex branch
+79,Alex,Davidson,,1890.0,10223.0,1275542.0,Alex Branch,Morgan,Stream,80.0,NAME_VARIATION,Name variation: alex branch
+82,Alexanders Mills,Henderson,,1897.0,33266.0,1314576.0,Alexander Mill,Greene,Populated Place,83.33333333333333,FUZZY_GENERAL,"Fuzzy match (score: 93.33333333333333), different county"
+89,Alice,Benton,,1896.0,13489.0,1304799.0,Alice Creek,Morgan,Stream,80.0,NAME_VARIATION,Name variation: alice creek
+90,Alisonia,Franklin,1850.0,1851.0,29123.0,1304808.0,Allisona,Williamson,Populated Place,77.5,FUZZY_GENERAL,"Fuzzy match (score: 87.5), different county"
+90,Alisonia,Franklin,1850.0,1851.0,29124.0,1304808.0,Allisona,Rutherford,Populated Place,77.5,FUZZY_GENERAL,"Fuzzy match (score: 87.5), different county"
+97,Allendale,Claiborne,,,32911.0,1283661.0,Ellendale,Shelby,Populated Place,78.88888888888889,FUZZY_GENERAL,"Fuzzy match (score: 88.88888888888889), different county"
+97,Allendale,Claiborne,,,33115.0,1308407.0,Allandale,Hawkins,Populated Place,78.88888888888889,FUZZY_GENERAL,"Fuzzy match (score: 88.88888888888889), different county"
+101,Allens Chapel,DeKalb,,,30436.0,1275607.0,Allens,Haywood,Populated Place,80.0,NAME_VARIATION,Name variation: allens
+103,Allens Ferry,Cannon,,1842.0,675.0,1313247.0,Callens Ferry (historical),Hardin,Crossing,86.0,FUZZY_GENERAL,"Fuzzy match (score: 96.0), different county"
+104,Allens Ferry,Warren,,1836.0,675.0,1313247.0,Callens Ferry (historical),Hardin,Crossing,86.0,FUZZY_GENERAL,"Fuzzy match (score: 96.0), different county"
+105,Allens Stand,Lawrence,,,21920.0,1643104.0,Allens Island,Greene,Island,78.0,FUZZY_GENERAL,"Fuzzy match (score: 88.0), different county"
+106,Allens Station,Hancock,,1855.0,30436.0,1275607.0,Allens,Haywood,Populated Place,80.0,NAME_VARIATION,Name variation: allens
+107,Allens Station,Hawkins,,1846.0,30436.0,1275607.0,Allens,Haywood,Populated Place,80.0,NAME_VARIATION,Name variation: allens
+110,Allenville,Giles,,1828.0,314.0,1312976.0,Allensville (historical),Sevier,Populated Place,85.23809523809523,FUZZY_GENERAL,"Fuzzy match (score: 95.23809523809523), different county"
+112,Allenville,Warren,,1822.0,314.0,1312976.0,Allensville (historical),Sevier,Populated Place,85.23809523809523,FUZZY_GENERAL,"Fuzzy match (score: 95.23809523809523), different county"
+113,Alley,Sequatchie,,1899.0,29550.0,1303994.0,Talley,Marshall,Populated Place,80.9090909090909,FUZZY_GENERAL,"Fuzzy match (score: 90.9090909090909), different county"
+116,Allington,Roane,,,27898.0,1275854.0,Arlington,Knox,Populated Place,78.88888888888889,FUZZY_GENERAL,"Fuzzy match (score: 88.88888888888889), different county"
+116,Allington,Roane,,,29343.0,1304869.0,Arlington,Shelby,Populated Place,78.88888888888889,FUZZY_GENERAL,"Fuzzy match (score: 88.88888888888889), different county"
+116,Allington,Roane,,,32063.0,1309075.0,Arlington,Houston,Populated Place,78.88888888888889,FUZZY_GENERAL,"Fuzzy match (score: 88.88888888888889), different county"
+118,Allosonia,Williamson,1879.0,1960.0,29123.0,1304808.0,Allisona,Williamson,Populated Place,87.35294117647058,FUZZY_GENERAL,"Fuzzy match (score: 82.35294117647058), same county"
+120,Alltens,Overton,,,30436.0,1275607.0,Allens,Haywood,Populated Place,82.3076923076923,FUZZY_GENERAL,"Fuzzy match (score: 92.3076923076923), different county"
+131,Alpines,Rhea,,1900.0,34183.0,1275634.0,Alpine,Overton,Populated Place,82.3076923076923,FUZZY_GENERAL,"Fuzzy match (score: 92.3076923076923), different county"
+137,Alton,Cannon,,1906.0,648.0,1313499.0,Walton (historical),Davidson,Populated Place,80.9090909090909,FUZZY_GENERAL,"Fuzzy match (score: 90.9090909090909), different county"
+138,Alton Hill,Macon,,1904.0,18613.0,1286660.0,Hamilton Hill,Sullivan,Summit,76.95652173913044,FUZZY_GENERAL,"Fuzzy match (score: 86.95652173913044), different county"
+139,Alton Hill,Shelby,,1893.0,18613.0,1286660.0,Hamilton Hill,Sullivan,Summit,76.95652173913044,FUZZY_GENERAL,"Fuzzy match (score: 86.95652173913044), different county"
+143,Alum Springs,Hawkins,,1869.0,4776.0,1642820.0,Ball Spring,Hawkins,Spring,78.26086956521739,FUZZY_WITH_COUNTY,Fuzzy match in same county (score: 78.26086956521739)
+157,Ammis,Meigs,1894.0,1900.0,30569.0,1314581.0,Amis,Hawkins,Populated Place,78.88888888888889,FUZZY_GENERAL,"Fuzzy match (score: 88.88888888888889), different county"
+159,Amish,Lawrence,,,30569.0,1314581.0,Amis,Hawkins,Populated Place,78.88888888888889,FUZZY_GENERAL,"Fuzzy match (score: 88.88888888888889), different county"
+161,Amity Hill,Hardeman,,1867.0,32325.0,1643496.0,Amity,Cannon,Populated Place,80.0,NAME_VARIATION,Name variation: amity
+178,Andersons,Wilson,,1834.0,29482.0,1314584.0,Anderson,Sullivan,Populated Place,84.11764705882352,FUZZY_GENERAL,"Fuzzy match (score: 94.11764705882352), different county"
+178,Andersons,Wilson,,1834.0,30643.0,1275675.0,Anderson,Coffee,Populated Place,84.11764705882352,FUZZY_GENERAL,"Fuzzy match (score: 94.11764705882352), different county"
+178,Andersons,Wilson,,1834.0,30773.0,1314583.0,Anderson,Franklin,Populated Place,84.11764705882352,FUZZY_GENERAL,"Fuzzy match (score: 94.11764705882352), different county"
+179,Andersons Store,McNairy,,1866.0,4682.0,1642040.0,Andersons Spring,Carter,Spring,75.0,FIRST_WORD,"First word match, different county"
+179,Andersons Store,McNairy,,1866.0,4829.0,1643065.0,Andersons Shoals,Cocke,Bar,75.0,FIRST_WORD,"First word match, different county"
+179,Andersons Store,McNairy,,1866.0,4830.0,1643065.0,Andersons Shoals,Hamblen,Bar,75.0,FIRST_WORD,"First word match, different county"
+181,Andrew(s) Chapel,Madison,,1903.0,25421.0,1023781.0,Andrew Johnson Mountain,Madison,Summit,80.0,FIRST_WORD,"First word match with suffix 'mountain', same county"
+182,Andrews,Maury,,1902.0,2335.0,1275749.0,Andrews Spring,Marshall,Spring,80.0,NAME_VARIATION,Name variation: andrews spring
+182,Andrews,Maury,,1902.0,16265.0,1304840.0,Andrews Creek,Cannon,Stream,80.0,NAME_VARIATION,Name variation: andrews creek
+182,Andrews,Maury,,1902.0,16266.0,1304840.0,Andrews Creek,Rutherford,Stream,80.0,NAME_VARIATION,Name variation: andrews creek
+183,Andrews Chapel,Madison,1849.0,1903.0,16265.0,1304840.0,Andrews Creek,Cannon,Stream,75.0,FIRST_WORD,"First word match, different county"
+183,Andrews Chapel,Madison,1849.0,1903.0,16266.0,1304840.0,Andrews Creek,Rutherford,Stream,75.0,FIRST_WORD,"First word match, different county"
+183,Andrews Chapel,Madison,1849.0,1903.0,26790.0,1275747.0,Andrews Hollow,Stewart,Valley,75.0,FIRST_WORD,"First word match, different county"
+184,Andrews Chapel,McMinn,,,16265.0,1304840.0,Andrews Creek,Cannon,Stream,75.0,FIRST_WORD,"First word match, different county"
+184,Andrews Chapel,McMinn,,,16266.0,1304840.0,Andrews Creek,Rutherford,Stream,75.0,FIRST_WORD,"First word match, different county"
+184,Andrews Chapel,McMinn,,,26790.0,1275747.0,Andrews Hollow,Stewart,Valley,75.0,FIRST_WORD,"First word match, different county"
+185,Andrews (Stand),Maury,,,2335.0,1275749.0,Andrews Spring,Marshall,Spring,80.0,NAME_VARIATION,Name variation: andrews spring
+185,Andrews (Stand),Maury,,,16265.0,1304840.0,Andrews Creek,Cannon,Stream,80.0,NAME_VARIATION,Name variation: andrews creek
+185,Andrews (Stand),Maury,,,16266.0,1304840.0,Andrews Creek,Rutherford,Stream,80.0,NAME_VARIATION,Name variation: andrews creek
+186,Andy,Perry,,1904.0,13585.0,1327461.0,Andy Creek,Pickett,Stream,80.0,NAME_VARIATION,Name variation: andy creek
+186,Andy,Perry,,1904.0,7115.0,1275751.0,Andy Branch,Anderson,Stream,80.0,NAME_VARIATION,Name variation: andy branch
+186,Andy,Perry,,1904.0,8197.0,1275750.0,Andy Branch,Johnson,Stream,80.0,NAME_VARIATION,Name variation: andy branch
+192,Ann Boor,Maury,,1823.0,21263.0,1275761.0,Ann Homer,Perry,Ridge,75.0,FIRST_WORD,"First word match, different county"
+192,Ann Boor,Maury,,1823.0,21264.0,1275761.0,Ann Homer,Wayne,Ridge,75.0,FIRST_WORD,"First word match, different county"
+197,Ansonia,Franklin,,,29405.0,1275955.0,Asia,Franklin,Populated Place,77.72727272727273,FUZZY_GENERAL,"Fuzzy match (score: 72.72727272727273), same county"
+226,Bald Hornet,Montgomery,,,20493.0,1276216.0,Bald Point,Franklin,Summit,75.0,FIRST_WORD,"First word match, different county"
+226,Bald Hornet,Montgomery,,,29782.0,1314621.0,Bald Point,Grainger,Populated Place,75.0,FIRST_WORD,"First word match, different county"
+226,Bald Hornet,Montgomery,,,0.0,1308776.0,Bald Island (historical),Stewart,Island,75.0,FIRST_WORD,"First word match, different county"
+242,Bandy,Sumner,,1903.0,11663.0,1276260.0,Bandy Creek,Scott,Stream,80.0,NAME_VARIATION,Name variation: bandy creek
+242,Bandy,Sumner,,1903.0,11664.0,1276260.0,Bandy Creek,Fentress,Stream,80.0,NAME_VARIATION,Name variation: bandy creek
+246,Banner,Sevier,,1903.0,33745.0,1276268.0,Banner Springs,Fentress,Populated Place,80.0,NAME_VARIATION,Name variation: banner springs
+246,Banner,Sevier,,1903.0,28473.0,1327499.0,Banner Hill,Unicoi,Populated Place,80.0,NAME_VARIATION,Name variation: banner hill
+250,Baptist,Rhea,,1891.0,16997.0,1276271.0,Baptist Gap,Claiborne,Gap,80.0,NAME_VARIATION,Name variation: baptist gap
+250,Baptist,Rhea,,1891.0,27482.0,1276273.0,Baptist Ridge,Clay,Ridge,80.0,NAME_VARIATION,Name variation: baptist ridge
+250,Baptist,Rhea,,1891.0,32019.0,1314624.0,Baptist Ridge,Clay,Populated Place,80.0,NAME_VARIATION,Name variation: baptist ridge
+252,Barb,Hancock,,1903.0,19809.0,1276275.0,Barb Hollow,Anderson,Valley,80.0,NAME_VARIATION,Name variation: barb hollow
+264,Barley,Monroe,,1906.0,5315.0,1276320.0,Barley Branch,Rhea,Stream,80.0,NAME_VARIATION,Name variation: barley branch
+264,Barley,Monroe,,1906.0,5785.0,1276321.0,Barley Branch,Campbell,Stream,80.0,NAME_VARIATION,Name variation: barley branch
+264,Barley,Monroe,,1906.0,16105.0,1276322.0,Barley Creek,Campbell,Stream,80.0,NAME_VARIATION,Name variation: barley creek
+265,Barley,Shelby,,1928.0,32147.0,1276088.0,Bailey,Shelby,Populated Place,88.33333333333334,FUZZY_GENERAL,"Fuzzy match (score: 83.33333333333334), same county"
+266,Barlow,Overton,1888.0,1890.0,11582.0,1326578.0,Barlow Branch,Wayne,Stream,80.0,NAME_VARIATION,Name variation: barlow branch
+269,Barnes Store,Coffee,,,32306.0,1327502.0,Barnes,Washington,Populated Place,80.0,NAME_VARIATION,Name variation: barnes
+269,Barnes Store,Coffee,,,33383.0,1276340.0,Barnes,Pickett,Populated Place,80.0,NAME_VARIATION,Name variation: barnes
+274,Barren Point,Grainger,,,19057.0,1276291.0,Bare Point,Hamilton,Cape,80.9090909090909,FUZZY_GENERAL,"Fuzzy match (score: 90.9090909090909), different county"
+278,Barren Hill,Henry,,1869.0,19226.0,1276386.0,Barron Hill,Marshall,Summit,80.9090909090909,FUZZY_GENERAL,"Fuzzy match (score: 90.9090909090909), different county"
+281,Barren Spring,Carroll,,,2354.0,1276387.0,Barron Spring,Marshall,Spring,82.3076923076923,FUZZY_GENERAL,"Fuzzy match (score: 92.3076923076923), different county"
+282,Barren Springs,Fentress,,1878.0,2354.0,1276387.0,Barron Spring,Marshall,Spring,78.88888888888889,FUZZY_GENERAL,"Fuzzy match (score: 88.88888888888889), different county"
+283,Barren Springs,Perry,,1828.0,2354.0,1276387.0,Barron Spring,Marshall,Spring,78.88888888888889,FUZZY_GENERAL,"Fuzzy match (score: 88.88888888888889), different county"
+284,Barretsburg (Barrettsburgh),Washington,,,31051.0,1315100.0,Garrettsburg,Carroll,Populated Place,76.95652173913044,FUZZY_GENERAL,"Fuzzy match (score: 86.95652173913044), different county"
+287,Barrow,Tipton,,1907.0,31418.0,1314601.0,Arrow,Maury,Populated Place,80.9090909090909,FUZZY_GENERAL,"Fuzzy match (score: 90.9090909090909), different county"
+288,Barryville,Perry,,1824.0,28367.0,1313377.0,Berryville,Davidson,Populated Place,80.0,FUZZY_GENERAL,"Fuzzy match (score: 90.0), different county"
+293,Bartletts Fort,Blount,,,2355.0,1276405.0,Bartletts Bar,Smith,Bar,75.0,FIRST_WORD,"First word match, different county"
+299,Baryville,Decatur,,,27672.0,1292868.0,Maryville,Blount,Populated Place,78.88888888888889,FUZZY_GENERAL,"Fuzzy match (score: 88.88888888888889), different county"
+299,Baryville,Decatur,,,29945.0,1279837.0,Caryville,Campbell,Populated Place,78.88888888888889,FUZZY_GENERAL,"Fuzzy match (score: 88.88888888888889), different county"
+306,Bass Landing,Lake,,1879.0,2359.0,1276430.0,Bass Bay,Benton,Bay,75.0,FIRST_WORD,"First word match, different county"
+306,Bass Landing,Lake,,1879.0,15014.0,1276431.0,Bass Branch,Giles,Stream,75.0,FIRST_WORD,"First word match, different county"
+306,Bass Landing,Lake,,1879.0,27348.0,1276437.0,Bass Hollow,Stewart,Valley,75.0,FIRST_WORD,"First word match, different county"
+307,Bastinville,Hickman,1866.0,1873.0,32049.0,1314331.0,Stainville,Anderson,Populated Place,75.71428571428572,FUZZY_GENERAL,"Fuzzy match (score: 85.71428571428572), different county"
+312,Batesville,Tipton,,1841.0,32140.0,1304011.0,Tatesville,Grundy,Populated Place,80.0,FUZZY_GENERAL,"Fuzzy match (score: 90.0), different county"
+319,Batson,Cannon,,1858.0,734.0,1643502.0,Blanton (historical),Cannon,Populated Place,81.92307692307692,FUZZY_GENERAL,"Fuzzy match (score: 76.92307692307692), same county"
+320,Batson,Dickson,,1905.0,23015.0,1276474.0,Batson Hollow,Humphreys,Valley,80.0,NAME_VARIATION,Name variation: batson hollow
+325,Beaverdam Forks,Roane,,1868.0,6580.0,1305042.0,Beaverdam Creek,Dickson,Stream,75.0,FIRST_WORD,"First word match, different county"
+325,Beaverdam Forks,Roane,,1868.0,7797.0,1276727.0,Beaverdam Creek,Henry,Stream,75.0,FIRST_WORD,"First word match, different county"
+325,Beaverdam Forks,Roane,,1868.0,12006.0,1276725.0,Beaverdam Creek,Bledsoe,Stream,75.0,FIRST_WORD,"First word match, different county"
+330,Bay Mount,Greene,,1858.0,21580.0,1276521.0,Bays Mountain,Greene,Range,86.81818181818181,FUZZY_GENERAL,"Fuzzy match (score: 81.81818181818181), same county"
+331,Bayerville,Marion,,1848.0,28313.0,1276198.0,Bakerville,Humphreys,Populated Place,80.0,FUZZY_GENERAL,"Fuzzy match (score: 90.0), different county"
+342,Beach,Campbell,,1883.0,7541.0,1276524.0,Beach Creek,Benton,Stream,80.0,NAME_VARIATION,Name variation: beach creek
+373,Beauty,Fentress,,1890.0,33487.0,1647075.0,Beauty Hill,McNairy,Populated Place,80.0,NAME_VARIATION,Name variation: beauty hill
+383,Beaverdam Forks,Tipton,,,6580.0,1305042.0,Beaverdam Creek,Dickson,Stream,75.0,FIRST_WORD,"First word match, different county"
+383,Beaverdam Forks,Tipton,,,7797.0,1276727.0,Beaverdam Creek,Henry,Stream,75.0,FIRST_WORD,"First word match, different county"
+383,Beaverdam Forks,Tipton,,,12006.0,1276725.0,Beaverdam Creek,Bledsoe,Stream,75.0,FIRST_WORD,"First word match, different county"
+387,Beckley,Dickson,,1881.0,882.0,1313302.0,Beasley (historical),Dickson,Populated Place,76.42857142857143,FUZZY_GENERAL,"Fuzzy match (score: 71.42857142857143), same county"
+395,Beech,Obion,,,33166.0,1276858.0,Beech Springs,Sevier,Populated Place,80.0,NAME_VARIATION,Name variation: beech springs
+395,Beech,Obion,,,6317.0,1276802.0,Beech Branch,Morgan,Stream,80.0,NAME_VARIATION,Name variation: beech branch
+395,Beech,Obion,,,9448.0,1276804.0,Beech Branch,Sevier,Stream,80.0,NAME_VARIATION,Name variation: beech branch
+396,Beech,Sumner,1757.0,1867.0,33166.0,1276858.0,Beech Springs,Sevier,Populated Place,80.0,NAME_VARIATION,Name variation: beech springs
+396,Beech,Sumner,1757.0,1867.0,6317.0,1276802.0,Beech Branch,Morgan,Stream,80.0,NAME_VARIATION,Name variation: beech branch
+396,Beech,Sumner,1757.0,1867.0,9448.0,1276804.0,Beech Branch,Sevier,Stream,80.0,NAME_VARIATION,Name variation: beech branch
+397,Beech Bethany,Clay,,,26691.0,1276789.0,Beech Bend,Davidson,Bend,75.0,FIRST_WORD,"First word match, different county"
+397,Beech Bethany,Clay,,,26857.0,1310570.0,Beech Bend,Decatur,Bend,75.0,FIRST_WORD,"First word match, different county"
+397,Beech Bethany,Clay,,,6317.0,1276802.0,Beech Branch,Morgan,Stream,75.0,FIRST_WORD,"First word match, different county"
+422,Beech Point,Gibson,,1855.0,2374.0,1276857.0,Beech Spring,Wayne,Spring,75.0,FIRST_WORD,"First word match, different county"
+422,Beech Point,Gibson,,1855.0,4130.0,1303148.0,Beech Spring,Washington,Spring,75.0,FIRST_WORD,"First word match, different county"
+422,Beech Point,Gibson,,1855.0,4663.0,1640278.0,Beech Spring,Washington,Spring,75.0,FIRST_WORD,"First word match, different county"
+423,Beech Point,Obion,,1883.0,2374.0,1276857.0,Beech Spring,Wayne,Spring,75.0,FIRST_WORD,"First word match, different county"
+423,Beech Point,Obion,,1883.0,4130.0,1303148.0,Beech Spring,Washington,Spring,75.0,FIRST_WORD,"First word match, different county"
+423,Beech Point,Obion,,1883.0,4663.0,1640278.0,Beech Spring,Washington,Spring,75.0,FIRST_WORD,"First word match, different county"
+428,Beechland,Maury,,1903.0,21289.0,1276851.0,Beech Island,Union,Island,75.71428571428572,FUZZY_GENERAL,"Fuzzy match (score: 85.71428571428572), different county"
+437,Beeville,Pickett,,1907.0,30376.0,1305090.0,Belleville,Lincoln,Populated Place,78.88888888888889,FUZZY_GENERAL,"Fuzzy match (score: 88.88888888888889), different county"
+481,Bellmont,Bedford,,,28242.0,1314663.0,Belmont,Anderson,Populated Place,83.33333333333333,FUZZY_GENERAL,"Fuzzy match (score: 93.33333333333333), different county"
+481,Bellmont,Bedford,,,29163.0,1314662.0,Belmont,Coffee,Populated Place,83.33333333333333,FUZZY_GENERAL,"Fuzzy match (score: 93.33333333333333), different county"
+481,Bellmont,Bedford,,,29503.0,1276976.0,Belmont,Jefferson,Populated Place,83.33333333333333,FUZZY_GENERAL,"Fuzzy match (score: 93.33333333333333), different county"
+485,Bells Depot,Haywood,1859.0,1872.0,33903.0,1305093.0,Bells,Crockett,Populated Place,80.0,NAME_VARIATION,Name variation: bells
+497,Bellville,Roane,,1866.0,30376.0,1305090.0,Belleville,Lincoln,Populated Place,84.73684210526316,FUZZY_GENERAL,"Fuzzy match (score: 94.73684210526316), different county"
+516,Bend of the Chucky,Hamblen,,,1341.0,1645034.0,Chuckey Bend (historical),Hamblen,Populated Place,78.33333333333334,FUZZY_GENERAL,"Fuzzy match (score: 73.33333333333334), same county"
+520,Bennett,Campbell,1904.0,1922.0,20246.0,1269268.0,Bennett Ridge,Lewis,Ridge,80.0,NAME_VARIATION,Name variation: bennett ridge
+520,Bennett,Campbell,1904.0,1922.0,6663.0,1277008.0,Bennett Branch,Moore,Stream,80.0,NAME_VARIATION,Name variation: bennett branch
+520,Bennett,Campbell,1904.0,1922.0,6664.0,1277008.0,Bennett Branch,Bedford,Stream,80.0,NAME_VARIATION,Name variation: bennett branch
+521,Bennetts Ferry,Jackson,1847.0,1860.0,326.0,1312413.0,Bennett Ferry (historical),Clay,Crossing,86.2962962962963,FUZZY_GENERAL,"Fuzzy match (score: 96.2962962962963), different county"
+522,Bennetts Station,Knox,,,6143.0,1305105.0,Bennetts Creek,Henry,Stream,75.0,FIRST_WORD,"First word match, different county"
+522,Bennetts Station,Knox,,,6144.0,1305105.0,Bennetts Creek,Benton,Stream,75.0,FIRST_WORD,"First word match, different county"
+522,Bennetts Station,Knox,,,10940.0,1277019.0,Bennetts Creek,Fayette,Stream,75.0,FIRST_WORD,"First word match, different county"
+524,Benson Town,Lawrence,,,22648.0,1647150.0,Benson Hollow,Cocke,Valley,75.0,FIRST_WORD,"First word match, different county"
+524,Benson Town,Lawrence,,,6192.0,1277022.0,Benson Branch,Weakley,Stream,75.0,FIRST_WORD,"First word match, different county"
+524,Benson Town,Lawrence,,,25534.0,1277023.0,Benson Mountain,Sevier,Summit,75.0,FIRST_WORD,"First word match, different county"
+536,Benton Town,Williamson,1835.0,1918.0,34437.0,2405244.0,Town of Benton,Polk,Civil,78.0,FUZZY_GENERAL,"Fuzzy match (score: 88.0), different county"
+537,Bentonville,Polk,1840.0,1845.0,1761.0,1640651.0,Boonville (historical),Polk,Populated Place,85.0,FUZZY_GENERAL,"Fuzzy match (score: 80.0), same county"
+554,Bethel Academy,Maury,,,31809.0,1277096.0,Bethel,Maury,Populated Place,80.0,FIRST_WORD,"First word match with suffix '', same county"
+575,Bettieville,Shelby,,1879.0,30851.0,1276385.0,Barretville,Shelby,Populated Place,77.72727272727273,FUZZY_GENERAL,"Fuzzy match (score: 72.72727272727273), same county"
+580,Bexar,Lauderdale,1894.0,1960.0,354.0,1310397.0,Bear (historical),Roane,Populated Place,78.88888888888889,FUZZY_GENERAL,"Fuzzy match (score: 88.88888888888889), different county"
+603,Big Four,Montgomery,,1907.0,14044.0,1305219.0,Big McAdoo Creek,Montgomery,Stream,80.0,FIRST_WORD,"First word match with suffix 'creek', same county"
+620,Big Spring Union,Claiborne,,,4808.0,1642892.0,Union Spring,Hawkins,Spring,75.71428571428572,FUZZY_GENERAL,"Fuzzy match (score: 85.71428571428572), different county"
+627,Bigfall,Hancock,,1905.0,2390.0,1277293.0,Big Falls,Coffee,Falls,77.5,FUZZY_GENERAL,"Fuzzy match (score: 87.5), different county"
+637,Birch Pond,Fayette,,1845.0,6448.0,1298087.0,Pond Branch,Lawrence,Stream,75.71428571428572,FUZZY_GENERAL,"Fuzzy match (score: 85.71428571428572), different county"
+637,Birch Pond,Fayette,,1845.0,9556.0,1298089.0,Pond Branch,Benton,Stream,75.71428571428572,FUZZY_GENERAL,"Fuzzy match (score: 85.71428571428572), different county"
+637,Birch Pond,Fayette,,1845.0,9557.0,1298089.0,Pond Branch,Carroll,Stream,75.71428571428572,FUZZY_GENERAL,"Fuzzy match (score: 85.71428571428572), different county"
+645,Birds Bridge,Greene,,1904.0,18983.0,1277367.0,Big Ridge,Greene,Ridge,76.19047619047619,FUZZY_WITH_COUNTY,Fuzzy match in same county (score: 76.19047619047619)
+645,Birds Bridge,Greene,,1904.0,22485.0,1277364.0,Big Ridge,Greene,Ridge,76.19047619047619,FUZZY_WITH_COUNTY,Fuzzy match in same county (score: 76.19047619047619)
+647,Birdsong Bluff,Madison,,1833.0,8276.0,1277516.0,Birdsong Creek,Carroll,Stream,75.0,FIRST_WORD,"First word match, different county"
+647,Birdsong Bluff,Madison,,1833.0,8277.0,1277516.0,Birdsong Creek,Benton,Stream,75.0,FIRST_WORD,"First word match, different county"
+647,Birdsong Bluff,Madison,,1833.0,9812.0,1277513.0,Birdsong Branch,Giles,Stream,75.0,FIRST_WORD,"First word match, different county"
+648,Birds Station,Blount,,,29189.0,1294080.0,Miser Station,Blount,Populated Place,81.92307692307692,FUZZY_GENERAL,"Fuzzy match (score: 76.92307692307692), same county"
+667,Black Oak Grove,Hardeman,,1859.0,28243.0,1314689.0,Black Oak,White,Populated Place,80.0,NAME_VARIATION,Name variation: black oak
+667,Black Oak Grove,Hardeman,,1859.0,28526.0,1277589.0,Black Oak,Scott,Populated Place,80.0,NAME_VARIATION,Name variation: black oak
+667,Black Oak Grove,Hardeman,,1859.0,29479.0,1277588.0,Black Oak,Knox,Populated Place,80.0,NAME_VARIATION,Name variation: black oak
+670,Blackwater,Hawkins,,1828.0,5467.0,1277619.0,Blackwater Creek,Hancock,Stream,80.0,NAME_VARIATION,Name variation: blackwater creek
+670,Blackwater,Hawkins,,1828.0,5468.0,1277619.0,Blackwater Creek,Lee,Stream,80.0,NAME_VARIATION,Name variation: blackwater creek
+670,Blackwater,Hawkins,,1828.0,9659.0,1463534.0,Blackwater Creek,Hancock,Stream,80.0,NAME_VARIATION,Name variation: blackwater creek
+675,Blacks,Lawrence,1874.0,,1345.0,1307603.0,Blacks Ford (historical),Anderson,Crossing,75.0,FIRST_WORD,"First word match, different county"
+675,Blacks,Lawrence,1874.0,,961.0,1311855.0,Blacks Ferry (historical),Warren,Crossing,75.0,FIRST_WORD,"First word match, different county"
+675,Blacks,Lawrence,1874.0,,1355.0,1307602.0,Blacks Ferry (historical),Anderson,Crossing,75.0,FIRST_WORD,"First word match, different county"
+676,Blacks Fort,Blount,,,1345.0,1307603.0,Blacks Ford (historical),Anderson,Crossing,80.9090909090909,FUZZY_GENERAL,"Fuzzy match (score: 90.9090909090909), different county"
+680,Blainsville,Grainger,,1923.0,33820.0,1279296.0,Cainsville,Wilson,Populated Place,75.71428571428572,FUZZY_GENERAL,"Fuzzy match (score: 85.71428571428572), different county"
+685,Blairs Cross Roads,Grainger,1825.0,1883.0,33843.0,1314618.0,Bakers Crossroads,White,Populated Place,75.71428571428572,FUZZY_GENERAL,"Fuzzy match (score: 85.71428571428572), different county"
+690,Blakes Mill(s),Lawrence,,1981.0,3739.0,1301854.0,Miller Lake,Lawrence,Reservoir,86.81818181818181,FUZZY_GENERAL,"Fuzzy match (score: 81.81818181818181), same county"
+707,Bledsoes (Lick) Station,Sumner,,1830.0,30499.0,1290982.0,Lees Station,Bledsoe,Populated Place,75.71428571428572,FUZZY_GENERAL,"Fuzzy match (score: 85.71428571428572), different county"
+708,Bledsoe Stand,Fentress,,,15557.0,1305289.0,Bledsoe Creek,Sumner,Stream,75.0,FIRST_WORD,"First word match, different county"
+708,Bledsoe Stand,Fentress,,,15558.0,1305289.0,Bledsoe Creek,Macon,Stream,75.0,FIRST_WORD,"First word match, different county"
+708,Bledsoe Stand,Fentress,,,21281.0,1277683.0,Bledsoe Hollow,Bedford,Valley,75.0,FIRST_WORD,"First word match, different county"
+740,Blows Ferry,Knox,,,871.0,1313243.0,Browns Ferry (historical),Hardin,Crossing,76.95652173913044,FUZZY_GENERAL,"Fuzzy match (score: 86.95652173913044), different county"
+740,Blows Ferry,Knox,,,1823.0,1278626.0,Browns Ferry,Hamilton,Crossing,76.95652173913044,FUZZY_GENERAL,"Fuzzy match (score: 86.95652173913044), different county"
+748,Bluewater Creek,Lawrence,,,7965.0,1305952.0,Clear Creek,Lawrence,Stream,76.92307692307692,FUZZY_WITH_COUNTY,Fuzzy match in same county (score: 76.92307692307692)
+753,Alexanders Place,,,,4772.0,1642817.0,Alexanders Shoals,Hawkins,Bar,80.0,FIRST_WORD,First word match with suffix 'shoals'
+753,Alexanders Place,,,,4849.0,1643130.0,Alexanders Shoals,Greene,Bar,80.0,FIRST_WORD,First word match with suffix 'shoals'
+766,Blue Spring(s) Station,Bradley,,1906.0,32066.0,1314703.0,Blue Springs,Bradley,Populated Place,82.41935483870968,FUZZY_GENERAL,"Fuzzy match (score: 77.41935483870968), same county"
+779,Bluff Mills,Wilson,,1881.0,17653.0,1294120.0,Mitchells Bluff,Wilson,Cliff,89.61538461538461,FUZZY_GENERAL,"Fuzzy match (score: 84.61538461538461), same county"
+810,Boles,Clay,,,6221.0,1277901.0,Boles Branch,McNairy,Stream,80.0,NAME_VARIATION,Name variation: boles branch
+810,Boles,Clay,,,6425.0,1277902.0,Boles Branch,Overton,Stream,80.0,NAME_VARIATION,Name variation: boles branch
+822,Bon Eau,Hardin,1858.0,1861.0,29720.0,1305339.0,Bon Air,White,Populated Place,75.0,FIRST_WORD,"First word match, different county"
+822,Bon Eau,Hardin,1858.0,1861.0,31633.0,1314713.0,Bon Air,Sumner,Populated Place,75.0,FIRST_WORD,"First word match, different county"
+822,Bon Eau,Hardin,1858.0,1861.0,33739.0,1305340.0,Bon Aqua,Hickman,Populated Place,75.0,FIRST_WORD,"First word match, different county"
+879,Box Town,Putnam,,,4467.0,1311818.0,Box Slough,Obion,Gut,75.0,FIRST_WORD,"First word match, different county"
+879,Box Town,Putnam,,,20270.0,1278090.0,Box Hollow,Williamson,Valley,75.0,FIRST_WORD,"First word match, different county"
+879,Box Town,Putnam,,,27236.0,1278091.0,Box Hollow,Humphreys,Valley,75.0,FIRST_WORD,"First word match, different county"
+889,Boyds Landing,Hardin,1867.0,1887.0,8071.0,1305369.0,Boyds Creek,Sevier,Stream,75.0,FIRST_WORD,"First word match, different county"
+889,Boyds Landing,Hardin,1867.0,1887.0,28124.0,1314721.0,Boyds Creek,Sevier,Populated Place,75.0,FIRST_WORD,"First word match, different county"
+896,Brabsons Mill,Washington,1856.0,1856.0,2018.0,1642451.0,Brabsons Ford,Blount,Crossing,75.0,FIRST_WORD,"First word match, different county"
+898,Brackens,Sumner,1830.0,1834.0,30387.0,1278141.0,Brackentown,Sumner,Populated Place,78.6842105263158,FUZZY_GENERAL,"Fuzzy match (score: 73.6842105263158), same county"
+906,Bradens Point,Tipton,1835.0,1836.0,19891.0,1644835.0,Brandywine Point,Tipton,Cape,80.86206896551724,FUZZY_GENERAL,"Fuzzy match (score: 75.86206896551724), same county"
+907,Bradens Station,Fayette,1869.0,1882.0,1123.0,1648683.0,Braden Division (historical),Fayette,Census,78.33333333333334,FUZZY_GENERAL,"Fuzzy match (score: 73.33333333333334), same county"
+910,Bradfords Landing,Haywood,,,2477.0,1278169.0,Bradford Lake,Haywood,Lake,78.33333333333334,FUZZY_GENERAL,"Fuzzy match (score: 73.33333333333334), same county"
+913,Bradley County,Bradley,,,4173.0,1305386.0,Bradley Lake,Knox,Reservoir,75.0,FIRST_WORD,"First word match, different county"
+913,Bradley County,Bradley,,,12845.0,1278176.0,Bradley Branch,Union,Stream,75.0,FIRST_WORD,"First word match, different county"
+913,Bradley County,Bradley,,,12846.0,1278188.0,Bradley Creek,Rutherford,Stream,75.0,FIRST_WORD,"First word match, different county"
+925,Branch,Tipton,1830.0,1835.0,7097.0,1282878.0,Dry Branch,Tipton,Stream,75.0,FUZZY_WITH_COUNTY,Fuzzy match in same county (score: 75.0)
+925,Branch,Tipton,1830.0,1835.0,11890.0,1277237.0,Big Branch,Tipton,Stream,75.0,FUZZY_WITH_COUNTY,Fuzzy match in same county (score: 75.0)
+925,Branch,Tipton,1830.0,1835.0,17134.0,1278227.0,Branch Islands,Maury,Island,75.0,FIRST_WORD,"First word match, different county"
+928,Brandon,Hardin,1899.0,1904.0,4253.0,1308795.0,Brandon Spring,Stewart,Spring,80.0,NAME_VARIATION,Name variation: brandon spring
+928,Brandon,Hardin,1899.0,1904.0,18867.0,1305393.0,Brandon Hollow,Moore,Valley,80.0,NAME_VARIATION,Name variation: brandon hollow
+933,Smeedsville,Dickson,,,31320.0,1303706.0,Sneedville,Hancock,Populated Place,75.71428571428572,FUZZY_GENERAL,"Fuzzy match (score: 85.71428571428572), different county"
+935,Brattons,Macon,1842.0,1842.0,33740.0,1305402.0,Brattontown,Macon,Populated Place,78.6842105263158,FUZZY_GENERAL,"Fuzzy match (score: 73.6842105263158), same county"
+959,Brevards,Smith,1830.0,1837.0,439.0,1644685.0,Brevards Ferry (historical),Benton,Crossing,75.0,FIRST_WORD,"First word match, different county"
+959,Brevards,Smith,1830.0,1837.0,1494.0,1644685.0,Brevards Ferry (historical),Humphreys,Crossing,75.0,FIRST_WORD,"First word match, different county"
+975,Brick Academy,Lawrence,,,31460.0,1305408.0,Brick Mill,Blount,Populated Place,75.0,FIRST_WORD,"First word match, different county"
+975,Brick Academy,Lawrence,,,31494.0,1647320.0,Brick Church,Giles,Populated Place,75.0,FIRST_WORD,"First word match, different county"
+1000,Bristow,Maury,,,31612.0,1327702.0,Bristol,Sullivan,Populated Place,75.71428571428572,FUZZY_GENERAL,"Fuzzy match (score: 85.71428571428572), different county"
+1005,Broad,Cocke,,,13178.0,1327708.0,Broad Branch,Greene,Stream,80.0,NAME_VARIATION,Name variation: broad branch
+1005,Broad,Cocke,,,13179.0,1327708.0,Broad Branch,Unicoi,Stream,80.0,NAME_VARIATION,Name variation: broad branch
+1005,Broad,Cocke,,,27381.0,1278432.0,Broad Hollow,Humphreys,Valley,80.0,NAME_VARIATION,Name variation: broad hollow
+1022,Brodies,Decatur,1896.0,1934.0,770.0,1308556.0,Brodies Ferry (historical),Perry,Crossing,75.0,FIRST_WORD,"First word match, different county"
+1031,Bull Run Station,Union,,,8433.0,1305515.0,Bull Run,Moore,Stream,80.0,NAME_VARIATION,Name variation: bull run
+1031,Bull Run Station,Union,,,10881.0,1305516.0,Bull Run,Davidson,Stream,80.0,NAME_VARIATION,Name variation: bull run
+1031,Bull Run Station,Union,,,10882.0,1305516.0,Bull Run,Cheatham,Stream,80.0,NAME_VARIATION,Name variation: bull run
+1033,Brooks,Sumner,1902.0,1906.0,18762.0,1278483.0,Brooks Gap,Scott,Gap,80.0,NAME_VARIATION,Name variation: brooks gap
+1033,Brooks,Sumner,1902.0,1906.0,26037.0,1278482.0,Brooks Gap,Anderson,Gap,80.0,NAME_VARIATION,Name variation: brooks gap
+1033,Brooks,Sumner,1902.0,1906.0,21353.0,1278490.0,Brooks Point,Coffee,Cape,80.0,NAME_VARIATION,Name variation: brooks point
+1041,Baileys Grove,,,,30832.0,1327452.0,Allen Grove,Cocke,Populated Place,75.0,FUZZY_GENERAL,Fuzzy match (score: 75.0)
+1044,Brown,Cannon,1889.0,1890.0,29834.0,1314745.0,Browns,Macon,Populated Place,80.9090909090909,FUZZY_GENERAL,"Fuzzy match (score: 90.9090909090909), different county"
+1044,Brown,Cannon,1889.0,1890.0,32156.0,1314744.0,Browns,Cocke,Populated Place,80.9090909090909,FUZZY_GENERAL,"Fuzzy match (score: 90.9090909090909), different county"
+1045,Brown,Maury,,,29834.0,1314745.0,Browns,Macon,Populated Place,80.9090909090909,FUZZY_GENERAL,"Fuzzy match (score: 90.9090909090909), different county"
+1045,Brown,Maury,,,32156.0,1314744.0,Browns,Cocke,Populated Place,80.9090909090909,FUZZY_GENERAL,"Fuzzy match (score: 90.9090909090909), different county"
+1053,Brownham,Lincoln,1829.0,1830.0,30177.0,1314715.0,Bonham,Rhea,Populated Place,75.71428571428572,FUZZY_GENERAL,"Fuzzy match (score: 85.71428571428572), different county"
+1059,Browns Cove,Franklin,1829.0,1830.0,5827.0,1278622.0,Browns Creek,Bledsoe,Stream,75.0,FIRST_WORD,"First word match, different county"
+1059,Browns Cove,Franklin,1829.0,1830.0,8188.0,1278623.0,Browns Creek,Henderson,Stream,75.0,FIRST_WORD,"First word match, different county"
+1059,Browns Cove,Franklin,1829.0,1830.0,11854.0,1278621.0,Browns Creek,Haywood,Stream,75.0,FIRST_WORD,"First word match, different county"
+1098,Bryans,Hardeman,1830.0,1834.0,9281.0,1278732.0,Bryans Fork,Overton,Stream,75.0,FIRST_WORD,"First word match, different county"
+1117,Buck Lodge,Sumner,1878.0,1910.0,19099.0,1278837.0,Buck Ridge,Johnson,Ridge,75.0,FIRST_WORD,"First word match, different county"
+1117,Buck Lodge,Sumner,1878.0,1910.0,20688.0,1278836.0,Buck Ridge,Johnson,Ridge,75.0,FIRST_WORD,"First word match, different county"
+1117,Buck Lodge,Sumner,1878.0,1910.0,20831.0,1278835.0,Buck Ridge,Morgan,Ridge,75.0,FIRST_WORD,"First word match, different county"
+1145,Cameron,White,1881.0,1906.0,9250.0,1279364.0,Cameron Branch,Cocke,Stream,80.0,NAME_VARIATION,Name variation: cameron branch
+1145,Cameron,White,1881.0,1906.0,23459.0,1279366.0,Cameron Hill,Hamilton,Summit,80.0,NAME_VARIATION,Name variation: cameron hill
+1145,Cameron,White,1881.0,1906.0,20241.0,1279367.0,Cameron Hollow,Sevier,Valley,80.0,NAME_VARIATION,Name variation: cameron hollow
+1154,Camp Four,Grundy,,,2535.0,1279410.0,Camp Slough,Lauderdale,Lake,75.0,FIRST_WORD,"First word match, different county"
+1154,Camp Four,Grundy,,,28657.0,1305632.0,Camp Jordan,Hamilton,Populated Place,75.0,FIRST_WORD,"First word match, different county"
+1154,Camp Four,Grundy,,,29824.0,1305625.0,Camp Ground,Fentress,Populated Place,75.0,FIRST_WORD,"First word match, different county"
+1159,Camp Monterey,Putnam,,,30652.0,1294185.0,Monterey,Putnam,Populated Place,81.19047619047619,FUZZY_GENERAL,"Fuzzy match (score: 76.19047619047619), same county"
+1162,Coats Town,,,,697.0,1307442.0,Cowanstown (historical),Johnson,Populated Place,80.0,FUZZY_GENERAL,Fuzzy match (score: 80.0)
+1162,Coats Town,,,,8825.0,1280817.0,Coats Branch,Weakley,Stream,80.0,FIRST_WORD,First word match with suffix 'branch'
+1266,Carrville,Washington,1868.0,1900.0,29945.0,1279837.0,Caryville,Campbell,Populated Place,78.88888888888889,FUZZY_GENERAL,"Fuzzy match (score: 88.88888888888889), different county"
+2337,Apple,Hardin,,1902.0,24820.0,1647317.0,Apple Hill,Giles,Summit,80.0,NAME_VARIATION,Name variation: apple hill
+2338,Apple Grove,Hancock,,1903.0,24820.0,1647317.0,Apple Hill,Giles,Summit,75.0,FIRST_WORD,"First word match, different county"
+2372,Armstrongs Fort,Davidson,,,2045.0,1312226.0,Armstrongs Ford,Knox,Crossing,83.33333333333333,FUZZY_GENERAL,"Fuzzy match (score: 93.33333333333333), different county"
+2377,Arnold,Bedford,,,5531.0,1327471.0,Arnold Branch,Johnson,Stream,80.0,NAME_VARIATION,Name variation: arnold branch
+2377,Arnold,Bedford,,,5926.0,1327472.0,Arnold Branch,Johnson,Stream,80.0,NAME_VARIATION,Name variation: arnold branch
+2377,Arnold,Bedford,,,7407.0,1275877.0,Arnold Branch,Decatur,Stream,80.0,NAME_VARIATION,Name variation: arnold branch
+2387,Ash Hill,Williamson,,,19600.0,1275930.0,Ash Hollow,Hickman,Valley,75.0,FIRST_WORD,"First word match, different county"
+2387,Ash Hill,Williamson,,,11040.0,1304881.0,Ash Slough,Shelby,Stream,75.0,FIRST_WORD,"First word match, different county"
+2387,Ash Hill,Williamson,,,15775.0,1275924.0,Ash Bayou,Lauderdale,Stream,75.0,FIRST_WORD,"First word match, different county"
+2401,Ash Grove,Williamson,,,11040.0,1304881.0,Ash Slough,Shelby,Stream,75.0,FIRST_WORD,"First word match, different county"
+2401,Ash Grove,Williamson,,,15775.0,1275924.0,Ash Bayou,Lauderdale,Stream,75.0,FIRST_WORD,"First word match, different county"
+2401,Ash Grove,Williamson,,,19600.0,1275930.0,Ash Hollow,Hickman,Valley,75.0,FIRST_WORD,"First word match, different county"
+2437,Austinville,Hardin,,,33804.0,1640275.0,Austin Village,Washington,Populated Place,78.0,FUZZY_GENERAL,"Fuzzy match (score: 88.0), different county"
+2500,Bernard,Hickman,,,19278.0,1277045.0,Bernard Hollow,Hawkins,Valley,80.0,NAME_VARIATION,Name variation: bernard hollow
+2500,Bernard,Hickman,,,19279.0,1277045.0,Bernard Hollow,Greene,Valley,80.0,NAME_VARIATION,Name variation: bernard hollow
+4920,Holly Plains,Robertson,,,30528.0,1328463.0,Holly Springs,Monroe,Populated Place,75.0,FIRST_WORD,"First word match, different county"
+4920,Holly Plains,Robertson,,,30661.0,1288112.0,Holly Springs,Overton,Populated Place,75.0,FIRST_WORD,"First word match, different county"
+4920,Holly Plains,Robertson,,,2979.0,1288109.0,Holly Spring,Marion,Spring,75.0,FIRST_WORD,"First word match, different county"
+10686,Webster Furnace,Montgomery,,,6179.0,1304431.0,Webster Branch,Lewis,Stream,75.0,FIRST_WORD,"First word match, different county"
+10686,Webster Furnace,Montgomery,,,9670.0,1304432.0,Webster Branch,Jackson,Stream,75.0,FIRST_WORD,"First word match, different county"
+10686,Webster Furnace,Montgomery,,,12223.0,1274050.0,Webster Branch,Roane,Stream,75.0,FIRST_WORD,"First word match, different county"
+10691,Welch Station,Cumberland,,,7706.0,1274063.0,Welch Branch,Hardin,Stream,75.0,FIRST_WORD,"First word match, different county"
+10691,Welch Station,Cumberland,,,10209.0,1274064.0,Welch Branch,Trousdale,Stream,75.0,FIRST_WORD,"First word match, different county"
+10691,Welch Station,Cumberland,,,11954.0,1304436.0,Welch Branch,Sequatchie,Stream,75.0,FIRST_WORD,"First word match, different county"
+10698,Well Grove,Blount,,,15661.0,1274089.0,Well Branch,Rhea,Stream,75.0,FIRST_WORD,"First word match, different county"
+10698,Well Grove,Blount,,,17352.0,1307302.0,Well Hollow,Lewis,Valley,75.0,FIRST_WORD,"First word match, different county"
+10698,Well Grove,Blount,,,17978.0,1274093.0,Well Hollow,Humphreys,Valley,75.0,FIRST_WORD,"First word match, different county"
+10699,Well Spring,Campbell,,,2277.0,1274117.0,Wells Spring,Jefferson,Spring,85.65217391304348,FUZZY_GENERAL,"Fuzzy match (score: 95.65217391304348), different county"
+11224,Albright,Sumner,,1903.0,19855.0,1275526.0,Albright Hollow,Lincoln,Valley,80.0,NAME_VARIATION,Name variation: albright hollow
+11230,Altona,Overton,,,28130.0,1296261.0,Okalona,Overton,Populated Place,81.92307692307692,FUZZY_GENERAL,"Fuzzy match (score: 76.92307692307692), same county"
+11233,Andrews Chapel,McMinn,,,16265.0,1304840.0,Andrews Creek,Cannon,Stream,75.0,FIRST_WORD,"First word match, different county"
+11233,Andrews Chapel,McMinn,,,16266.0,1304840.0,Andrews Creek,Rutherford,Stream,75.0,FIRST_WORD,"First word match, different county"
+11233,Andrews Chapel,McMinn,,,26790.0,1275747.0,Andrews Hollow,Stewart,Valley,75.0,FIRST_WORD,"First word match, different county"
+11240,Austinville,Hardin,,,33804.0,1640275.0,Austin Village,Washington,Populated Place,78.0,FUZZY_GENERAL,"Fuzzy match (score: 88.0), different county"
+11263,Bellmont,Davidson,,,28242.0,1314663.0,Belmont,Anderson,Populated Place,83.33333333333333,FUZZY_GENERAL,"Fuzzy match (score: 93.33333333333333), different county"
+11263,Bellmont,Davidson,,,29163.0,1314662.0,Belmont,Coffee,Populated Place,83.33333333333333,FUZZY_GENERAL,"Fuzzy match (score: 93.33333333333333), different county"
+11263,Bellmont,Davidson,,,29503.0,1276976.0,Belmont,Jefferson,Populated Place,83.33333333333333,FUZZY_GENERAL,"Fuzzy match (score: 93.33333333333333), different county"
+11374,Alton Hill,Smith,1841.0,1843.0,18613.0,1286660.0,Hamilton Hill,Sullivan,Summit,76.95652173913044,FUZZY_GENERAL,"Fuzzy match (score: 86.95652173913044), different county"
+11394,Armstrongs Station,,,,2045.0,1312226.0,Armstrongs Ford,Knox,Crossing,80.0,FIRST_WORD,First word match with suffix 'ford'
+11395,Bartons Station,,,,31030.0,1327570.0,Benton Station,Polk,Populated Place,82.75862068965517,FUZZY_GENERAL,Fuzzy match (score: 82.75862068965517)
