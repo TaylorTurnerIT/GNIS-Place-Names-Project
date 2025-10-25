@@ -10,35 +10,36 @@ import numpy as np
 from matching_algorithm import PlaceNameMatcher
 from tqdm import tqdm
 import json
+from typing import Dict, List, Any, Optional
 
 class MatchingPipeline:
     """Complete matching pipeline with quality metrics"""
-    
-    def __init__(self, place_names_df, gnis_df):
-        self.matcher = PlaceNameMatcher(place_names_df, gnis_df)
-        self.results = None
+
+    def __init__(self, place_names_df: pd.DataFrame, gnis_df: pd.DataFrame) -> None:
+        self.matcher: PlaceNameMatcher = PlaceNameMatcher(place_names_df, gnis_df)
+        self.results: Optional[pd.DataFrame] = None
         
-    def run_full_matching(self, confidence_threshold=70, batch_size=100):
+    def run_full_matching(self, confidence_threshold: float = 70, batch_size: int = 100) -> pd.DataFrame:
         """
         Run matching on all records with progress tracking
         """
-        total_records = len(self.matcher.place_names)
-        all_results = []
+        total_records: int = len(self.matcher.place_names)
+        all_results: List[Dict[str, Any]] = []
         
         print(f"Processing {total_records} place names...")
         print(f"Confidence threshold: {confidence_threshold}")
         
         # Process in batches for memory efficiency
         for start_idx in tqdm(range(0, total_records, batch_size)):
-            end_idx = min(start_idx + batch_size, total_records)
-            batch = self.matcher.place_names.iloc[start_idx:end_idx]
-            
+            end_idx: int = min(start_idx + batch_size, total_records)
+            batch: pd.DataFrame = self.matcher.place_names.iloc[start_idx:end_idx]
+
             for idx, place in batch.iterrows():
-                matches = self.matcher._find_matches_for_place(place, threshold=confidence_threshold)
-                
+                matches: List[Dict[str, Any]] = self.matcher._find_matches_for_place(place, threshold=confidence_threshold)
+
                 if matches:
-                    best_score = matches[0]['confidence']
-                    best_matches = [m for m in matches if m['confidence'] == best_score]
+                    best_score: float = matches[0]['confidence']
+                    best_matches: List[Dict[str, Any]] = [m for m in matches if m['confidence'] == best_score]
                     
                     for match in best_matches[:3]:  # Top 3 if tied
                         all_results.append({
@@ -76,12 +77,12 @@ class MatchingPipeline:
         self.results = pd.DataFrame(all_results)
         return self.results
     
-    def generate_quality_report(self):
+    def generate_quality_report(self) -> Dict[str, Any]:
         """Generate comprehensive quality metrics"""
         if self.results is None:
             raise ValueError("Must run matching first")
-        
-        report = {
+
+        report: Dict[str, Any] = {
             'total_places': len(self.matcher.place_names),
             'total_gnis': len(self.matcher.gnis),
             'matches_found': (self.results['confidence'] > 0).sum(),
@@ -102,58 +103,58 @@ class MatchingPipeline:
         report['strategy_distribution'] = self.results['match_strategy'].value_counts().to_dict()
         
         # Feature class distribution
-        matched = self.results[self.results['confidence'] > 0]
+        matched: pd.DataFrame = self.results[self.results['confidence'] > 0]
         if len(matched) > 0:
             report['feature_class_distribution'] = matched['gnis_feature_class'].value_counts().head(10).to_dict()
-        
+
         # County match analysis
-        matched_with_county = matched[
+        matched_with_county: pd.DataFrame = matched[
             (matched['place_county'].notna()) & 
             (matched['gnis_county'].notna())
         ]
         if len(matched_with_county) > 0:
-            county_matches = (
-                matched_with_county['place_county'].str.lower() == 
+            county_matches: int = (
+                matched_with_county['place_county'].str.lower() ==
                 matched_with_county['gnis_county'].str.lower()
             ).sum()
             report['county_match_rate'] = county_matches / len(matched_with_county) * 100
-        
+
         # Multiple matches analysis
-        places_with_multiple = self.results.groupby('place_idx').size()
+        places_with_multiple: pd.Series = self.results.groupby('place_idx').size()
         report['places_with_multiple_matches'] = (places_with_multiple > 1).sum()
         report['max_matches_per_place'] = places_with_multiple.max()
         
         return report
     
-    def export_for_review(self, output_dir='/home/claude'):
+    def export_for_review(self, output_dir: str = '/home/claude') -> None:
         """Export results in different formats for review"""
         if self.results is None:
             raise ValueError("Must run matching first")
-        
+
         # 1. High confidence matches - ready for auto-approval
-        high_confidence = self.results[self.results['confidence'] >= 90].copy()
+        high_confidence: pd.DataFrame = self.results[self.results['confidence'] >= 90].copy()
         high_confidence.to_csv(f'{output_dir}/high_confidence_matches.csv', index=False)
         
         # 2. Medium confidence - needs review
-        medium_confidence = self.results[
-            (self.results['confidence'] >= 75) & 
+        medium_confidence: pd.DataFrame = self.results[
+            (self.results['confidence'] >= 75) &
             (self.results['confidence'] < 90)
         ].copy()
         medium_confidence.to_csv(f'{output_dir}/medium_confidence_matches.csv', index=False)
-        
+
         # 3. Low confidence - needs expert review
-        low_confidence = self.results[
-            (self.results['confidence'] >= 70) & 
+        low_confidence: pd.DataFrame = self.results[
+            (self.results['confidence'] >= 70) &
             (self.results['confidence'] < 75)
         ].copy()
         low_confidence.to_csv(f'{output_dir}/low_confidence_matches.csv', index=False)
-        
+
         # 4. No matches - requires research
-        no_matches = self.results[self.results['confidence'] == 0].copy()
+        no_matches: pd.DataFrame = self.results[self.results['confidence'] == 0].copy()
         no_matches.to_csv(f'{output_dir}/no_matches.csv', index=False)
-        
+
         # 5. Multiple matches - needs disambiguation
-        multi_matches = self.results[
+        multi_matches: pd.DataFrame = self.results[
             self.results.duplicated(subset=['place_idx'], keep=False)
         ].sort_values(['place_idx', 'confidence'], ascending=[True, False])
         multi_matches.to_csv(f'{output_dir}/multiple_matches.csv', index=False)
@@ -169,18 +170,18 @@ class MatchingPipeline:
         print(f"  - multiple_matches.csv ({len(multi_matches)} records)")
         print(f"  - all_matches.csv ({len(self.results)} records)")
     
-    def create_review_html(self, output_file='/home/claude/review.html', max_records=100):
+    def create_review_html(self, output_file: str = '/home/claude/review.html', max_records: int = 100) -> None:
         """Create an HTML interface for reviewing matches"""
         if self.results is None:
             raise ValueError("Must run matching first")
-        
+
         # Sample records for review (prioritize medium confidence)
-        sample = self.results[
+        sample: pd.DataFrame = self.results[
             (self.results['confidence'] >= 75) & 
             (self.results['confidence'] < 90)
         ].head(max_records)
-        
-        html = """
+
+        html: str = """
 <!DOCTYPE html>
 <html>
 <head>
@@ -280,49 +281,49 @@ class MatchingPipeline:
 
 class MatchAnalyzer:
     """Analyze patterns in matching results"""
-    
+
     @staticmethod
-    def analyze_unmatched(place_names, results):
+    def analyze_unmatched(place_names: pd.DataFrame, results: pd.DataFrame) -> Dict[str, Any]:
         """Analyze characteristics of unmatched places"""
-        unmatched_idx = results[results['confidence'] == 0]['place_idx'].unique()
-        unmatched_places = place_names.loc[unmatched_idx]
-        
-        analysis = {
+        unmatched_idx: np.ndarray = results[results['confidence'] == 0]['place_idx'].unique()
+        unmatched_places: pd.DataFrame = place_names.loc[unmatched_idx]
+
+        analysis: Dict[str, Any] = {
             'total_unmatched': len(unmatched_places),
             'with_county': unmatched_places['County'].notna().sum(),
             'without_county': unmatched_places['County'].isna().sum(),
         }
         
         # PO duration analysis
-        unmatched_with_dates = unmatched_places[
-            unmatched_places['PO_Start'].notna() & 
+        unmatched_with_dates: pd.DataFrame = unmatched_places[
+            unmatched_places['PO_Start'].notna() &
             unmatched_places['PO_End'].notna()
         ]
         if len(unmatched_with_dates) > 0:
-            durations = unmatched_with_dates['PO_End'] - unmatched_with_dates['PO_Start']
+            durations: pd.Series = unmatched_with_dates['PO_End'] - unmatched_with_dates['PO_Start']
             analysis['avg_po_duration'] = durations.mean()
             analysis['median_po_duration'] = durations.median()
             analysis['short_lived_pos'] = (durations <= 5).sum()  # <= 5 years
-        
+
         # Name length analysis
-        name_lengths = unmatched_places['Place_Name'].str.split().str.len()
+        name_lengths: pd.Series = unmatched_places['Place_Name'].str.split().str.len()
         analysis['avg_name_length_words'] = name_lengths.mean()
         analysis['single_word_names'] = (name_lengths == 1).sum()
-        
+
         # Common patterns
         analysis['most_common_counties'] = unmatched_places['County'].value_counts().head(10).to_dict()
         
         return analysis
     
     @staticmethod
-    def suggest_improvements(results):
+    def suggest_improvements(results: pd.DataFrame) -> List[str]:
         """Suggest algorithm improvements based on results"""
-        suggestions = []
-        
+        suggestions: List[str] = []
+
         # Analyze fuzzy match scores
-        fuzzy_matches = results[results['match_strategy'].str.contains('FUZZY')]
+        fuzzy_matches: pd.DataFrame = results[results['match_strategy'].str.contains('FUZZY')]
         if len(fuzzy_matches) > 0:
-            avg_confidence = fuzzy_matches['confidence'].mean()
+            avg_confidence: float = fuzzy_matches['confidence'].mean()
             if avg_confidence < 75:
                 suggestions.append(
                     f"Fuzzy matches have low average confidence ({avg_confidence:.1f}%). "
@@ -330,7 +331,7 @@ class MatchAnalyzer:
                 )
         
         # Check for systematic county mismatches
-        mismatches = results[
+        mismatches: pd.DataFrame = results[
             (results['place_county'].notna()) &
             (results['gnis_county'].notna()) &
             (results['place_county'].str.lower() != results['gnis_county'].str.lower())
@@ -342,7 +343,7 @@ class MatchAnalyzer:
             )
         
         # Multiple matches analysis
-        multi_match_places = results[results.duplicated(subset=['place_idx'], keep=False)]['place_idx'].nunique()
+        multi_match_places: int = results[results.duplicated(subset=['place_idx'], keep=False)]['place_idx'].nunique()
         if multi_match_places > 0:
             suggestions.append(
                 f"{multi_match_places} places have multiple potential matches. "
@@ -378,7 +379,7 @@ if __name__ == "__main__":
     report = pipeline_sample.generate_quality_report()
     
     # Convert numpy types to native Python types for JSON serialization
-    def convert_to_native(obj):
+    def convert_to_native(obj: Any) -> Any:
         if isinstance(obj, dict):
             return {k: convert_to_native(v) for k, v in obj.items()}
         elif isinstance(obj, (np.integer, np.int64)):
@@ -388,7 +389,7 @@ if __name__ == "__main__":
         elif isinstance(obj, np.ndarray):
             return obj.tolist()
         return obj
-    
+
     report = convert_to_native(report)
     print(json.dumps(report, indent=2))
     
