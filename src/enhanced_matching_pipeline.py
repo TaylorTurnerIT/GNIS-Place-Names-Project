@@ -66,7 +66,7 @@ class EnhancedMatchingPipeline:
                 k: EnhancedMatchingPipeline._convert_to_native(v)
                 for k, v in obj.items()
             }
-        elif isinstance(obj, (np.integer, np.int64)):
+        elif isinstance(obj, np.integer):
             return int(obj)
         elif isinstance(obj, (np.floating, np.float64)):
             return float(obj)
