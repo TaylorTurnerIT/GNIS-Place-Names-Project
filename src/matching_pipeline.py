@@ -11,6 +11,7 @@ from matching_algorithm import PlaceNameMatcher
 from tqdm import tqdm
 import json
 from typing import Dict, List, Any, Optional
+from pathlib import Path
 
 class MatchingPipeline:
     """Complete matching pipeline with quality metrics"""
@@ -18,6 +19,19 @@ class MatchingPipeline:
     def __init__(self, place_names_df: pd.DataFrame, gnis_df: pd.DataFrame) -> None:
         self.matcher: PlaceNameMatcher = PlaceNameMatcher(place_names_df, gnis_df)
         self.results: Optional[pd.DataFrame] = None
+
+    @staticmethod
+    def _convert_to_native(obj: Any) -> Any:
+        """Convert numpy types to native Python types for JSON serialization"""
+        if isinstance(obj, dict):
+            return {k: MatchingPipeline._convert_to_native(v) for k, v in obj.items()}
+        elif isinstance(obj, (np.integer, np.int64)):
+            return int(obj)
+        elif isinstance(obj, (np.floating, np.float64)):
+            return float(obj)
+        elif isinstance(obj, np.ndarray):
+            return obj.tolist()
+        return obj
         
     def run_full_matching(self, confidence_threshold: float = 70, batch_size: int = 100) -> pd.DataFrame:
         """
@@ -123,10 +137,11 @@ class MatchingPipeline:
         places_with_multiple: pd.Series = self.results.groupby('place_idx').size()
         report['places_with_multiple_matches'] = (places_with_multiple > 1).sum()
         report['max_matches_per_place'] = places_with_multiple.max()
-        
-        return report
+
+        # Convert numpy types to native Python types
+        return self._convert_to_native(report)
     
-    def export_for_review(self, output_dir: str = '/home/claude') -> None:
+    def export_for_review(self, output_dir: str = 'output') -> None:
         """Export results in different formats for review"""
         if self.results is None:
             raise ValueError("Must run matching first")
@@ -170,7 +185,7 @@ class MatchingPipeline:
         print(f"  - multiple_matches.csv ({len(multi_matches)} records)")
         print(f"  - all_matches.csv ({len(self.results)} records)")
     
-    def create_review_html(self, output_file: str = '/home/claude/review.html', max_records: int = 100) -> None:
+    def create_review_html(self, output_file: str = 'output/review.html', max_records: int = 100) -> None:
         """Create an HTML interface for reviewing matches"""
         if self.results is None:
             raise ValueError("Must run matching first")
@@ -272,7 +287,7 @@ class MatchingPipeline:
 </html>
 """
         
-        with open(output_file, 'w') as f:
+        with open(output_file, 'w', encoding='utf-8') as f:
             f.write(html)
         
         print(f"\nReview interface created: {output_file}")
@@ -355,9 +370,12 @@ class MatchAnalyzer:
 
 # Example usage
 if __name__ == "__main__":
+    # Get project root directory (parent of src)
+    PROJECT_ROOT = Path(__file__).parent.parent
+
     # Load data
-    place_names = pd.read_csv('/mnt/user-data/uploads/PlaceNames.csv')
-    gnis = pd.read_csv('/mnt/user-data/uploads/GNIS_250319.csv')
+    place_names = pd.read_csv(PROJECT_ROOT / 'data' / 'PlaceNames.csv')
+    gnis = pd.read_csv(PROJECT_ROOT / 'data' / 'GNIS_250319.csv')
     
     print("=" * 80)
     print("PLACE NAME MATCHING PIPELINE")

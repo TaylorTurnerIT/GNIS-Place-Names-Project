@@ -185,21 +185,22 @@ To process all 11,716 place names:
 ```python
 from matching_pipeline import MatchingPipeline
 import pandas as pd
+from typing import Dict, Any
 
 # Load data
-place_names = pd.read_csv('PlaceNames.csv')
-gnis = pd.read_csv('GNIS_250319.csv')
+place_names: pd.DataFrame = pd.read_csv('data/PlaceNames.csv')
+gnis: pd.DataFrame = pd.read_csv('data/GNIS_250319.csv')
 
 # Create pipeline
-pipeline = MatchingPipeline(place_names, gnis)
+pipeline: MatchingPipeline = MatchingPipeline(place_names, gnis)
 
 # Run matching (takes ~8-10 minutes)
-results = pipeline.run_full_matching(confidence_threshold=70)
+results: pd.DataFrame = pipeline.run_full_matching(confidence_threshold=70)
 
 # Generate reports
-report = pipeline.generate_quality_report()
-pipeline.export_for_review()
-pipeline.create_review_html()
+report: Dict[str, Any] = pipeline.generate_quality_report()
+pipeline.export_for_review()  # Exports to output/ directory
+pipeline.create_review_html()  # Creates output/review.html
 ```
 
 ## 💡 Pro Tips

@@ -3,11 +3,15 @@ import numpy as np
 from collections import Counter
 import re
 from typing import List, Any
+from pathlib import Path
+
+# Get project root directory (parent of src)
+PROJECT_ROOT = Path(__file__).parent.parent
 
 # Load datasets
 print("Loading datasets...")
-place_names: pd.DataFrame = pd.read_csv('/mnt/user-data/uploads/PlaceNames.csv')
-gnis: pd.DataFrame = pd.read_csv('/mnt/user-data/uploads/GNIS_250319.csv')
+place_names: pd.DataFrame = pd.read_csv(PROJECT_ROOT / 'data' / 'PlaceNames.csv')
+gnis: pd.DataFrame = pd.read_csv(PROJECT_ROOT / 'data' / 'GNIS_250319.csv')
 
 print(f"\n=== DATASET OVERVIEW ===")
 print(f"PlaceNames records: {len(place_names)}")

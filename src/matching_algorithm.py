@@ -9,6 +9,7 @@ import re
 from rapidfuzz import fuzz, process
 from collections import defaultdict
 from typing import List, Tuple, Dict, Optional, Any, DefaultDict
+from pathlib import Path
 
 class PlaceNameMatcher:
     """
@@ -477,9 +478,12 @@ class PlaceNameMatcher:
 
 # Example usage
 if __name__ == "__main__":
+    # Get project root directory (parent of src)
+    PROJECT_ROOT = Path(__file__).parent.parent
+
     # Load data
-    place_names = pd.read_csv('/mnt/user-data/uploads/PlaceNames.csv')
-    gnis = pd.read_csv('/mnt/user-data/uploads/GNIS_250319.csv')
+    place_names = pd.read_csv(PROJECT_ROOT / 'data' / 'PlaceNames.csv')
+    gnis = pd.read_csv(PROJECT_ROOT / 'data' / 'GNIS_250319.csv')
     
     # Create matcher
     print("Initializing matcher...")
@@ -525,5 +529,7 @@ if __name__ == "__main__":
     print(results['match_strategy'].value_counts())
     
     # Save sample results
-    results.to_csv('/home/claude/sample_matches.csv', index=False)
-    print("\nSample results saved to sample_matches.csv")
+    import os
+    os.makedirs(PROJECT_ROOT / 'output', exist_ok=True)
+    results.to_csv(PROJECT_ROOT / 'output' / 'sample_matches.csv', index=False)
+    print(f"\nSample results saved to {PROJECT_ROOT / 'output' / 'sample_matches.csv'}")
