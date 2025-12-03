@@ -33,15 +33,26 @@ class MatchingPipeline:
             return obj.tolist()
         return obj
         
-    def run_full_matching(self, confidence_threshold: float = 70, batch_size: int = 100) -> pd.DataFrame:
+    def run_full_matching(
+        self,
+        confidence_threshold: float = 80,
+        batch_size: int = 100
+    ) -> pd.DataFrame:
         """
-        Run matching on all records with progress tracking
+        Run matching on all records with progress tracking.
+
+        Args:
+            confidence_threshold: Minimum confidence (default: 80, strict).
+            batch_size: Records per batch (default: 100).
+
+        Returns:
+            DataFrame with all match results.
         """
         total_records: int = len(self.matcher.place_names)
         all_results: List[Dict[str, Any]] = []
-        
+
         print(f"Processing {total_records} place names...")
-        print(f"Confidence threshold: {confidence_threshold}")
+        print(f"Confidence threshold: {confidence_threshold} (strict mode)")
         
         # Process in batches for memory efficiency
         for start_idx in tqdm(range(0, total_records, batch_size)):
@@ -49,13 +60,21 @@ class MatchingPipeline:
             batch: pd.DataFrame = self.matcher.place_names.iloc[start_idx:end_idx]
 
             for idx, place in batch.iterrows():
-                matches: List[Dict[str, Any]] = self.matcher._find_matches_for_place(place, threshold=confidence_threshold)
+                matches: List[Dict[str, Any]] = (
+                    self.matcher._find_matches_for_place(
+                        place,
+                        threshold=confidence_threshold
+                    )
+                )
 
                 if matches:
                     best_score: float = matches[0]['confidence']
-                    best_matches: List[Dict[str, Any]] = [m for m in matches if m['confidence'] == best_score]
-                    
-                    for match in best_matches[:3]:  # Top 3 if tied
+                    best_matches: List[Dict[str, Any]] = [
+                        m for m in matches
+                        if m['confidence'] == best_score
+                    ]
+
+                    for match in best_matches[:3]:
                         all_results.append({
                             'place_idx': idx,
                             'place_name': place['Place_Name'],
