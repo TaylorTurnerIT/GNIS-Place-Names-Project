@@ -8,13 +8,16 @@ import numpy as np
 import re
 from rapidfuzz import fuzz, process
 from collections import defaultdict
-from typing import List, Tuple, Dict, Optional, Any, DefaultDict
+from typing import List, Tuple, Dict, Optional, Any, DefaultDict, Union
 from pathlib import Path
 
 class PlaceNameMatcher:
     """
     Multi-strategy place name matching system with confidence scoring.
-    
+
+    STRICT MODE: Uses conservative thresholds and heavy penalties for
+    county mismatches to ensure high-quality matches.
+
     Key Challenges Addressed:
     1. Different naming conventions (e.g., "Aaron" vs "Aaron Branch")
     2. Historical markers in GNIS
@@ -22,13 +25,19 @@ class PlaceNameMatcher:
     4. Missing county information
     5. Multiple potential matches per place name
     """
-    
-    def __init__(self, place_names_df: pd.DataFrame, gnis_df: pd.DataFrame) -> None:
+
+    def __init__(
+        self,
+        place_names_df: pd.DataFrame,
+        gnis_df: pd.DataFrame
+    ) -> None:
         self.place_names: pd.DataFrame = place_names_df.copy()
         self.gnis: pd.DataFrame = gnis_df.copy()
-        self.gnis_by_county: Dict[Any, Any] = {}
-        self.gnis_by_name: Dict[Any, Any] = {}
-        self.gnis_by_first_word: DefaultDict[str, List[Any]] = defaultdict(list)
+        self.gnis_by_county: Dict[str, pd.Index] = {}
+        self.gnis_by_name: Dict[str, pd.Index] = {}
+        self.gnis_by_first_word: DefaultDict[str, List[int]] = (
+            defaultdict(list)
+        )
 
         # Preprocess data
         self._preprocess_data()
@@ -37,54 +46,84 @@ class PlaceNameMatcher:
         self._build_indexes()
         
     def _preprocess_data(self) -> None:
-        """Clean and standardize data"""
-        # Extract base names (remove parenthetical notes)
-        self.place_names['base_name'] = self.place_names['Place_Name'].apply(self._extract_base_name)
-        self.gnis['base_name'] = self.gnis['gaz_name'].apply(self._extract_base_name)
-        
-        # Normalize for comparison
-        self.place_names['normalized_name'] = self.place_names['base_name'].str.lower().str.strip()
-        self.gnis['normalized_name'] = self.gnis['base_name'].str.lower().str.strip()
-        
-        # Normalize counties
-        self.place_names['normalized_county'] = self.place_names['County'].str.lower().str.strip()
-        self.gnis['normalized_county'] = self.gnis['county_name'].str.lower().str.strip()
-        
-        # Extract name components (first word, last word, etc.)
-        self.place_names['first_word'] = self.place_names['normalized_name'].str.split().str[0]
-        self.place_names['last_word'] = self.place_names['normalized_name'].str.split().str[-1]
-        
-        self.gnis['first_word'] = self.gnis['normalized_name'].str.split().str[0]
-        self.gnis['last_word'] = self.gnis['normalized_name'].str.split().str[-1]
-        
-        # Identify historical markers
+        """
+        Clean and standardize data for matching.
+
+        Extracts base names, normalizes text, and identifies components.
+        """
+        self.place_names['base_name'] = (
+            self.place_names['Place_Name'].apply(self._extract_base_name)
+        )
+        self.gnis['base_name'] = (
+            self.gnis['gaz_name'].apply(self._extract_base_name)
+        )
+
+        self.place_names['normalized_name'] = (
+            self.place_names['base_name'].str.lower().str.strip()
+        )
+        self.gnis['normalized_name'] = (
+            self.gnis['base_name'].str.lower().str.strip()
+        )
+
+        self.place_names['normalized_county'] = (
+            self.place_names['County'].str.lower().str.strip()
+        )
+        self.gnis['normalized_county'] = (
+            self.gnis['county_name'].str.lower().str.strip()
+        )
+
+        self.place_names['first_word'] = (
+            self.place_names['normalized_name'].str.split().str[0]
+        )
+        self.place_names['last_word'] = (
+            self.place_names['normalized_name'].str.split().str[-1]
+        )
+
+        self.gnis['first_word'] = (
+            self.gnis['normalized_name'].str.split().str[0]
+        )
+        self.gnis['last_word'] = (
+            self.gnis['normalized_name'].str.split().str[-1]
+        )
+
         self.gnis['is_historical'] = self.gnis['gaz_name'].str.contains(
             r'\(historical\)', case=False, na=False
         )
         
     def _extract_base_name(self, name: Any) -> str:
-        """Remove parenthetical notes and extra whitespace"""
+        """
+        Remove parenthetical notes and extra whitespace.
+
+        Args:
+            name: Place name (may be NaN or string).
+
+        Returns:
+            Cleaned base name.
+        """
         if pd.isna(name):
             return ''
-        # Remove content in parentheses
         clean_name: str = re.sub(r'\s*\([^)]*\)\s*', ' ', str(name))
         return clean_name.strip()
     
     def _build_indexes(self) -> None:
-        """Build lookup indexes for fast matching"""
-        # Index by county and name
-        self.gnis_by_county = self.gnis.groupby('normalized_county').groups
+        """
+        Build lookup indexes for fast matching.
+
+        Creates indexes by county, name, and first word.
+        """
+        self.gnis_by_county = self.gnis.groupby(
+            'normalized_county'
+        ).groups
         self.gnis_by_name = self.gnis.groupby('normalized_name').groups
 
-        # Index by first word for partial matching
         self.gnis_by_first_word = defaultdict(list)
         for idx, row in self.gnis.iterrows():
             if pd.notna(row['first_word']) and row['first_word']:
                 self.gnis_by_first_word[row['first_word']].append(idx)
     
-    def match_all(self, confidence_threshold: float = 70) -> pd.DataFrame:
+    def match_all(self, confidence_threshold: float = 80) -> pd.DataFrame:
         """
-        Run all matching strategies and return results
+        Run all matching strategies and return results.
 
         Strategies (in order of confidence):
         1. Exact match (name + county)
@@ -94,6 +133,9 @@ class PlaceNameMatcher:
         5. Fuzzy name and county match
         6. Historical name matching
         7. First word matching (for cases like "Aaron" vs "Aaron Branch")
+
+        Args:
+            confidence_threshold: Minimum confidence score (default: 80).
         """
         results: List[Dict[str, Any]] = []
         
@@ -137,14 +179,27 @@ class PlaceNameMatcher:
         
         return pd.DataFrame(results)
     
-    def _find_matches_for_place(self, place: pd.Series, threshold: float = 70) -> List[Dict[str, Any]]:
-        """Find all potential matches for a single place"""
+    def _find_matches_for_place(
+        self,
+        place: pd.Series,
+        threshold: float = 80
+    ) -> List[Dict[str, Any]]:
+        """
+        Find all potential matches for a single place.
+
+        Args:
+            place: Place record to match.
+            threshold: Minimum confidence threshold (default: 80).
+
+        Returns:
+            List of potential matches with confidence scores.
+        """
         matches: List[Dict[str, Any]] = []
 
         place_name: str = place['normalized_name']
         place_county: str = place['normalized_county']
-        
-        if not place_name:
+
+        if not place_name or len(place_name) < 2:
             return matches
         
         # Strategy 1: Exact match (name + county)
@@ -181,15 +236,28 @@ class PlaceNameMatcher:
         
         return matches
     
-    def _exact_match(self, place_name: str, place_county: str) -> List[Dict[str, Any]]:
-        """Strategy 1: Exact name and county match"""
+    def _exact_match(
+        self,
+        place_name: str,
+        place_county: str
+    ) -> List[Dict[str, Any]]:
+        """
+        Strategy 1: Exact name and county match.
+
+        Args:
+            place_name: Normalized place name.
+            place_county: Normalized county name.
+
+        Returns:
+            List of exact matches with 100% confidence.
+        """
         matches: List[Dict[str, Any]] = []
-        
+
         mask = (
             (self.gnis['normalized_name'] == place_name) &
             (self.gnis['normalized_county'] == place_county)
         )
-        
+
         for idx, row in self.gnis[mask].iterrows():
             matches.append({
                 'gnis_idx': idx,
@@ -201,29 +269,39 @@ class PlaceNameMatcher:
                 'strategy': 'EXACT_MATCH',
                 'notes': 'Exact name and county match'
             })
-        
+
         return matches
     
-    def _exact_name_match(self, place_name: str, place_county: str) -> List[Dict[str, Any]]:
-        """Strategy 2: Exact name match, any county"""
+    def _exact_name_match(
+        self,
+        place_name: str,
+        place_county: str
+    ) -> List[Dict[str, Any]]:
+        """
+        Strategy 2: Exact name match, any county.
+
+        STRICT MODE: Wrong county significantly reduces confidence.
+        """
         matches: List[Dict[str, Any]] = []
-        
+
         mask = self.gnis['normalized_name'] == place_name
-        
+
         for idx, row in self.gnis[mask].iterrows():
-            # Higher confidence if counties match
             confidence: float = 95
             notes: str = 'Exact name match'
-            
+
             if pd.notna(place_county) and place_county:
                 if row['normalized_county'] == place_county:
                     continue  # Already covered by exact match
                 else:
-                    confidence = 85
-                    notes = 'Exact name, different county'
+                    confidence = 65
+                    notes = (
+                        'Exact name but DIFFERENT county - '
+                        'requires verification'
+                    )
             else:
                 notes = 'Exact name, no county to verify'
-            
+
             matches.append({
                 'gnis_idx': idx,
                 'gnis_id': row['gaz_id'],
@@ -234,29 +312,36 @@ class PlaceNameMatcher:
                 'strategy': 'EXACT_NAME',
                 'notes': notes
             })
-        
+
         return matches
     
-    def _name_variation_match(self, place_name: str, place_county: str, place: pd.Series) -> List[Dict[str, Any]]:
-        """Strategy 3: Handle name variations with suffixes/prefixes"""
+    def _name_variation_match(
+        self,
+        place_name: str,
+        place_county: str,
+        place: pd.Series
+    ) -> List[Dict[str, Any]]:
+        """
+        Strategy 3: Handle name variations with suffixes/prefixes.
+
+        STRICT MODE: Requires county match for high confidence.
+        """
         matches: List[Dict[str, Any]] = []
 
-        # Common variations to check
         variations: List[str] = self._generate_name_variations(place_name)
-        
+
         for variation in variations:
             mask = self.gnis['normalized_name'] == variation
 
             for idx, row in self.gnis[mask].iterrows():
-                confidence: float = 90
+                confidence: float = 75
 
-                # Adjust confidence based on county match
                 if pd.notna(place_county) and place_county:
                     if row['normalized_county'] == place_county:
-                        confidence = 95
+                        confidence = 85
                     else:
-                        confidence = 80
-                
+                        confidence = 60
+
                 matches.append({
                     'gnis_idx': idx,
                     'gnis_id': row['gaz_id'],
@@ -267,14 +352,21 @@ class PlaceNameMatcher:
                     'strategy': 'NAME_VARIATION',
                     'notes': f'Name variation: {variation}'
                 })
-        
+
         return matches
     
     def _generate_name_variations(self, name: str) -> List[str]:
-        """Generate common name variations"""
+        """
+        Generate common name variations.
+
+        Args:
+            name: Normalized place name.
+
+        Returns:
+            List of potential name variations.
+        """
         variations: List[str] = []
 
-        # Common suffixes that might be added/removed
         suffixes: List[str] = [
             'branch', 'creek', 'hollow', 'ridge', 'spring', 'hill',
             'station', 'mill', 'chapel', 'store', 'landing', 'gap',
@@ -283,46 +375,66 @@ class PlaceNameMatcher:
 
         words: List[str] = name.split()
 
-        # Try adding common suffixes
         for suffix in suffixes:
             variations.append(f"{name} {suffix}")
 
-        # Try removing last word if it's a common suffix
         if len(words) > 1 and words[-1] in suffixes:
             variations.append(' '.join(words[:-1]))
 
-        # Try possessive variations
         if words:
             first_word: str = words[0]
             if not first_word.endswith('s'):
-                variations.append(first_word + 's ' + ' '.join(words[1:]) if len(words) > 1 else first_word + 's')
+                variation = (
+                    first_word + 's ' + ' '.join(words[1:])
+                    if len(words) > 1
+                    else first_word + 's'
+                )
+                variations.append(variation)
             if first_word.endswith('s') and len(first_word) > 1:
-                variations.append(first_word[:-1] + ' '.join(words[1:]) if len(words) > 1 else first_word[:-1])
+                variation = (
+                    first_word[:-1] + ' '.join(words[1:])
+                    if len(words) > 1
+                    else first_word[:-1]
+                )
+                variations.append(variation)
 
         return list(set(variations))
     
-    def _fuzzy_match_with_county(self, place_name: str, place_county: str, threshold: float) -> List[Dict[str, Any]]:
-        """Strategy 4: Fuzzy name match with exact county"""
+    def _fuzzy_match_with_county(
+        self,
+        place_name: str,
+        place_county: str,
+        threshold: float
+    ) -> List[Dict[str, Any]]:
+        """
+        Strategy 4: Fuzzy name match with exact county.
+
+        STRICT MODE: Higher threshold required for fuzzy matches.
+        """
         matches: List[Dict[str, Any]] = []
 
-        # Get all GNIS entries in the same county
-        if place_county in self.gnis_by_county:
-            county_gnis: pd.DataFrame = self.gnis.iloc[list(self.gnis_by_county[place_county])]
+        effective_threshold: float = max(threshold, 85)
 
-            # Use fuzzy matching on names
-            names_to_match: List[str] = county_gnis['normalized_name'].tolist()
+        if place_county in self.gnis_by_county:
+            county_gnis: pd.DataFrame = self.gnis.iloc[
+                list(self.gnis_by_county[place_county])
+            ]
+
+            names_to_match: List[str] = (
+                county_gnis['normalized_name'].tolist()
+            )
             fuzzy_results = process.extract(
-                place_name, 
-                names_to_match, 
+                place_name,
+                names_to_match,
                 scorer=fuzz.token_sort_ratio,
                 limit=5
             )
-            
+
             for match_name, score, idx_in_list in fuzzy_results:
-                if score >= threshold:
+                if score >= effective_threshold:
                     gnis_idx = county_gnis.index[idx_in_list]
                     row = self.gnis.loc[gnis_idx]
-                    
+
                     matches.append({
                         'gnis_idx': gnis_idx,
                         'gnis_id': row['gaz_id'],
@@ -333,14 +445,28 @@ class PlaceNameMatcher:
                         'strategy': 'FUZZY_WITH_COUNTY',
                         'notes': f'Fuzzy match in same county (score: {score})'
                     })
-        
+
         return matches
     
-    def _fuzzy_match_general(self, place_name: str, place_county: str, threshold: float) -> List[Dict[str, Any]]:
-        """Strategy 5: General fuzzy matching"""
+    def _fuzzy_match_general(
+        self,
+        place_name: str,
+        place_county: str,
+        threshold: float
+    ) -> List[Dict[str, Any]]:
+        """
+        Strategy 5: General fuzzy matching.
+
+        STRICT MODE: Much higher threshold, heavy penalty for wrong county.
+        Only used as last resort.
+        """
         matches: List[Dict[str, Any]] = []
 
-        # Fuzzy match against all GNIS names
+        effective_threshold: float = max(threshold, 90)
+
+        if len(place_name) < 3:
+            return matches
+
         names_to_match: List[str] = self.gnis['normalized_name'].tolist()
         fuzzy_results = process.extract(
             place_name,
@@ -348,23 +474,22 @@ class PlaceNameMatcher:
             scorer=fuzz.token_sort_ratio,
             limit=10
         )
-        
+
         for match_name, score, idx_in_list in fuzzy_results:
-            if score >= threshold:
+            if score >= effective_threshold:
                 row = self.gnis.iloc[idx_in_list]
 
-                # Adjust confidence based on county match
                 confidence: float = score
                 notes: str = f'Fuzzy match (score: {score})'
-                
+
                 if pd.notna(place_county) and place_county:
                     if row['normalized_county'] == place_county:
-                        confidence = min(score + 5, 100)  # Boost for county match
+                        confidence = min(score + 3, 100)
                         notes += ', same county'
                     else:
-                        confidence = max(score - 10, threshold)  # Penalty for different county
-                        notes += ', different county'
-                
+                        confidence = max(score - 30, 0)
+                        notes += ', DIFFERENT county (high risk)'
+
                 if confidence >= threshold:
                     matches.append({
                         'gnis_idx': row.name,
@@ -376,49 +501,70 @@ class PlaceNameMatcher:
                         'strategy': 'FUZZY_GENERAL',
                         'notes': notes
                     })
-        
+
         return matches
     
-    def _first_word_match(self, place: pd.Series, threshold: float) -> List[Dict[str, Any]]:
-        """Strategy 6: Match on first word (for cases like 'Aaron' vs 'Aaron Branch')"""
+    def _first_word_match(
+        self,
+        place: pd.Series,
+        threshold: float
+    ) -> List[Dict[str, Any]]:
+        """
+        Strategy 6: Match on first word (e.g., 'Aaron' vs 'Aaron Branch').
+
+        STRICT MODE: Much lower confidence, requires county match,
+        minimum 4 chars.
+        """
         matches: List[Dict[str, Any]] = []
 
         first_word: str = place['first_word']
         place_name: str = place['normalized_name']
         place_county: str = place['normalized_county']
-        
-        if not first_word or len(first_word) < 3:  # Avoid matching very short words
+
+        if not first_word or len(first_word) < 4:
             return matches
-        
-        # Only use if place name is relatively short (1-2 words)
+
         if len(place_name.split()) > 2:
             return matches
-        
-        # Get GNIS entries that start with the same word
+
         if first_word in self.gnis_by_first_word:
             for gnis_idx in self.gnis_by_first_word[first_word]:
                 row = self.gnis.loc[gnis_idx]
 
-                # Calculate confidence based on name similarity and county match
-                confidence: float = 70  # Base confidence for first word match
-
-                # Check if it's just adding a suffix
                 gnis_words: List[str] = row['normalized_name'].split()
-                if len(gnis_words) == 2 and gnis_words[0] == first_word:
-                    confidence = 80  # Higher confidence for simple suffix addition
 
-                # County match bonus
+                if len(gnis_words) > 3:
+                    continue
+
+                confidence: float = 55
                 notes: str
+
+                if len(gnis_words) == 2 and gnis_words[0] == first_word:
+                    confidence = 65
+
                 if pd.notna(place_county) and place_county:
                     if row['normalized_county'] == place_county:
-                        confidence = min(confidence + 10, 95)
-                        notes = f"First word match with suffix '{gnis_words[-1] if len(gnis_words) > 1 else ''}', same county"
+                        confidence = min(confidence + 15, 80)
+                        suffix = (
+                            gnis_words[-1] if len(gnis_words) > 1 else ''
+                        )
+                        notes = (
+                            f"First word match with suffix '{suffix}', "
+                            "same county - verify manually"
+                        )
                     else:
-                        confidence = max(confidence - 5, threshold)
-                        notes = f"First word match, different county"
+                        confidence = max(confidence - 20, 0)
+                        notes = (
+                            "First word match, DIFFERENT county - "
+                            "likely wrong"
+                        )
                 else:
-                    notes = f"First word match with suffix '{gnis_words[-1] if len(gnis_words) > 1 else ''}'"
-                
+                    notes = (
+                        f"First word match with suffix "
+                        f"'{gnis_words[-1] if len(gnis_words) > 1 else ''}' "
+                        "- no county to verify"
+                    )
+
                 if confidence >= threshold:
                     matches.append({
                         'gnis_idx': gnis_idx,
@@ -430,15 +576,27 @@ class PlaceNameMatcher:
                         'strategy': 'FIRST_WORD',
                         'notes': notes
                     })
-        
+
         return matches
     
-    def _deduplicate_matches(self, matches: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-        """Remove duplicate matches, keeping highest confidence"""
-        seen: Dict[Any, Dict[str, Any]] = {}
+    def _deduplicate_matches(
+        self,
+        matches: List[Dict[str, Any]]
+    ) -> List[Dict[str, Any]]:
+        """
+        Remove duplicate matches, keeping highest confidence.
+
+        Args:
+            matches: List of match dictionaries.
+
+        Returns:
+            Deduplicated list of matches.
+        """
+        seen: Dict[Union[int, str], Dict[str, Any]] = {}
         for match in matches:
-            key: Any = match['gnis_idx']
-            if key not in seen or match['confidence'] > seen[key]['confidence']:
+            key: Union[int, str] = match['gnis_idx']
+            if (key not in seen or
+                    match['confidence'] > seen[key]['confidence']):
                 seen[key] = match
 
         return list(seen.values())
