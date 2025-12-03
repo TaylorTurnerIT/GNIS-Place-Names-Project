@@ -76,7 +76,7 @@ class EnhancedMatchingPipeline:
 
     def run_full_matching(
         self,
-        confidence_threshold: float = 70,
+        confidence_threshold: float = 80,
         batch_size: int = 100,
         use_distance: bool = True
     ) -> pd.DataFrame:
@@ -84,7 +84,7 @@ class EnhancedMatchingPipeline:
         Run complete matching pipeline with optional distance enhancement.
 
         Args:
-            confidence_threshold: Minimum confidence score for matches.
+            confidence_threshold: Minimum confidence (default: 80, strict).
             batch_size: Number of records to process per batch.
             use_distance: Whether to apply distance-based adjustments.
 
@@ -95,8 +95,11 @@ class EnhancedMatchingPipeline:
         all_results: List[Dict[str, Any]] = []
 
         print(f"Processing {total_records} place names...")
-        print(f"Confidence threshold: {confidence_threshold}")
-        print(f"Distance enhancement: {'enabled' if use_distance else 'disabled'}")
+        print(f"Confidence threshold: {confidence_threshold} (strict mode)")
+        print(
+            f"Distance enhancement: "
+            f"{'enabled' if use_distance else 'disabled'}"
+        )
 
         for start_idx in tqdm(range(0, total_records, batch_size)):
             end_idx = min(start_idx + batch_size, total_records)
